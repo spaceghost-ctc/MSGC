@@ -5,7 +5,7 @@
    <string>defaultSolution</string>
    <void method="set">
     <object idref="SolutionManager$PersistState0"/>
-    <string>C:\ti\ccs1011\ccs\ccs_base\dvt_4.1.0.202004271001\CodeGen\solutions\CodeGenCoverage</string>
+    <string>C:\ti\ccs1020\ccs\ccs_base\dvt_4.1.0.202004271001\CodeGen\solutions\CodeGenCoverage</string>
    </void>
   </void>
  </object>
@@ -14,10 +14,10 @@
  <void id="ArrayList0" method="get">
   <object idref="SolutionManager$PersistState0"/>
   <void method="add">
-   <string>C:\Users\space\workspace_v10\dvt\AnalysisSolutionsTemp\AnalysisSolution1612217552641\null</string>
+   <string>D:\GitHub\MSGC\LoRa\FlightFirmware\workspace_v10\dvt\AnalysisSolutionsTemp\AnalysisSolution1612315739120\null</string>
   </void>
   <void method="add">
-   <string>C:\ti\ccs1011\ccs\ccs_base\dvt_4.1.0.202004271001\CodeGen\solutions\CodeGenCoverage</string>
+   <string>C:\ti\ccs1020\ccs\ccs_base\dvt_4.1.0.202004271001\CodeGen\solutions\CodeGenCoverage</string>
   </void>
  </void>
 </void>
