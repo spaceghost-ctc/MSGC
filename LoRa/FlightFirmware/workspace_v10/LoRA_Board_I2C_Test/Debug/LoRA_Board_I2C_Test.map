@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v20.2.2                     
 ******************************************************************************
->> Linked Mon Feb  8 22:48:00 2021
+>> Linked Fri Feb 12 12:57:43 2021
 
 OUTPUT FILE NAME:   <LoRA_Board_I2C_Test.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 000082d6
+ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 00008318
 
 
 MEMORY CONFIGURATION
@@ -16,8 +16,8 @@ MEMORY CONFIGURATION
   INFO                  00001800   00000200  00000000  00000200  RWIX
   TLVMEM                00001a00   00000200  00000000  00000200  RWIX
   BOOTCODE              00001c00   00000400  00000000  00000400  RWIX
-  RAM                   00002000   00001000  000000a2  00000f5e  RWIX
-  FRAM                  00008000   00007f80  0000030e  00007c72  RWIX
+  RAM                   00002000   00001000  000000a4  00000f5c  RWIX
+  FRAM                  00008000   00007f80  00000340  00007c40  RWIX
   JTAGSIGNATURE         0000ff80   00000004  00000004  00000000  RWIX  ffff 
   BSLSIGNATURE          0000ff84   00000004  00000004  00000000  RWIX  ffff 
   BSLCONFIGURATIONSIGNA 0000ff88   00000002  00000002  00000000  RWIX  ffff 
@@ -86,45 +86,47 @@ section   page    origin      length       input sections
 
 .sysmem    0    00008000    00000000     UNINITIALIZED
 
-.cinit     0    00008000    00000016     
+.cinit     0    00008000    00000018     
                   00008000    00000008     (__TI_handler_table)
-                  00008008    00000006     (.cinit..data.load) [load image, compression = lzss]
-                  0000800e    00000008     (__TI_cinit_table)
+                  00008008    00000007     (.cinit..data.load) [load image, compression = lzss]
+                  0000800f    00000001     --HOLE-- [fill = 0]
+                  00008010    00000008     (__TI_cinit_table)
 
-.pinit     0    00008016    00000000     UNINITIALIZED
+.pinit     0    00008018    00000000     UNINITIALIZED
 
-.binit     0    00008016    00000000     
+.binit     0    00008018    00000000     
 
 .init_array 
-*          0    00008016    00000000     UNINITIALIZED
+*          0    00008018    00000000     UNINITIALIZED
 
 .mspabi.exidx 
-*          0    00008016    00000000     UNINITIALIZED
+*          0    00008018    00000000     UNINITIALIZED
 
 .mspabi.extab 
-*          0    00008016    00000000     UNINITIALIZED
+*          0    00008018    00000000     UNINITIALIZED
 
-.const     0    00008016    00000000     UNINITIALIZED
+.const     0    00008018    00000000     UNINITIALIZED
 
-.text      0    00008016    000002c0     
-                  00008016    000000ee     rts430x_lc_sd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  00008104    000000a4     main.obj (.text:main)
-                  000081a8    0000006a     rts430x_lc_sd_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
-                  00008212    00000040                            : cpy_util.asm.obj (.text:__memcpy_far)
-                  00008252    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
-                  0000828e    0000003c     rts430x_lc_sd_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  000082ca    00000006                            : exit.c.obj (.text:abort)
-                  000082d0    00000004                            : pre_init.c.obj (.text:_system_pre_init)
-                  000082d4    00000002                            : startup.c.obj (.text:_system_post_cinit)
+.text      0    00008018    000002de     
+                  00008018    000000ee     rts430x_lc_sd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00008106    000000b2     main.obj (.text:main)
+                  000081b8    0000006a     rts430x_lc_sd_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
+                  00008222    00000040                            : cpy_util.asm.obj (.text:__memcpy_far)
+                  00008262    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
+                  0000829e    0000003c     rts430x_lc_sd_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  000082da    00000010     main.obj (.text:transmit_I2C)
+                  000082ea    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
+                  000082f0    00000004                            : pre_init.c.obj (.text:_system_pre_init)
+                  000082f4    00000002                            : startup.c.obj (.text:_system_post_cinit)
 
 .text:_isr 
-*          0    000082d6    00000038     
-                  000082d6    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
-                  000082f6    00000010     main.obj (.text:_isr:EUSCI_B1_I2C_ISR)
-                  00008306    00000008     rts430x_lc_sd_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
+*          0    000082f6    0000004a     
+                  000082f6    00000022     main.obj (.text:_isr:EUSCI_B1_I2C_ISR)
+                  00008318    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
+                  00008338    00000008                            : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
 
-.data      0    00002000    00000002     UNINITIALIZED
-                  00002000    00000002     main.obj (.data)
+.data      0    00002000    00000004     UNINITIALIZED
+                  00002000    00000004     main.obj (.data)
 
 .stack     0    00002f60    000000a0     UNINITIALIZED
                   00002f60    00000002     rts430x_lc_sd_eabi.lib : boot.c.obj (.stack)
@@ -236,9 +238,9 @@ MODULE SUMMARY
        Module                       code   ro data   rw data
        ------                       ----   -------   -------
     .\
-       main.obj                     180    2         2      
+       main.obj                     228    2         4      
     +--+----------------------------+------+---------+---------+
-       Total:                       180    2         2      
+       Total:                       228    2         4      
                                                             
     C:\ti\ccs1020\ccs\ccs_base\msp430\lib\FR2xx\FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib
        frwp_init.obj                60     0         0      
@@ -282,15 +284,15 @@ MODULE SUMMARY
        Total:                       520    48        0      
                                                             
        Stack:                       0      0         160    
-       Linker Generated:            0      22        0      
+       Linker Generated:            0      23        0      
     +--+----------------------------+------+---------+---------+
-       Grand Total:                 760    72        162    
+       Grand Total:                 808    73        164    
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 0000800e records: 1, size/record: 8, table size: 8
-	.data: load addr=00008008, load size=00000006 bytes, run addr=00002000, run size=00000002 bytes, compression=lzss
+__TI_cinit_table @ 00008010 records: 1, size/record: 8, table size: 8
+	.data: load addr=00008008, load size=00000007 bytes, run addr=00002000, run size=00000004 bytes, compression=lzss
 
 
 LINKER GENERATED HANDLER TABLE
@@ -382,7 +384,7 @@ address   name
 00000672  BAKMEM9                                
 00000673  BAKMEM9_H                              
 00000672  BAKMEM9_L                              
-000082ca  C$$EXIT                                
+000082ea  C$$EXIT                                
 000002ee  CAPTIOCTL                              
 000002ef  CAPTIOCTL_H                            
 000002ee  CAPTIOCTL_L                            
@@ -461,7 +463,6 @@ address   name
 00000190  CSCTL8                                 
 00000191  CSCTL8_H                               
 00000190  CSCTL8_L                               
-00002000  Data_In                                
 000082f6  EUSCI_B1_I2C_ISR                       
 000001a0  FRCTL0                                 
 000001a1  FRCTL0_H                               
@@ -1315,14 +1316,14 @@ address   name
 000001cc  WDTCTL_L                               
 00003000  __STACK_END                            
 000000a0  __STACK_SIZE                           
-0000800e  __TI_CINIT_Base                        
-00008016  __TI_CINIT_Limit                       
+00008010  __TI_CINIT_Base                        
+00008018  __TI_CINIT_Limit                       
 00008000  __TI_Handler_Table_Base                
 00008008  __TI_Handler_Table_Limit               
-00008306  __TI_ISR_TRAP                          
-000081a8  __TI_auto_init_nobinit_nopinit_hold_wdt
-00008016  __TI_decompress_lzss                   
-0000828e  __TI_decompress_none                   
+00008338  __TI_ISR_TRAP                          
+000081b8  __TI_auto_init_nobinit_nopinit_hold_wdt
+00008018  __TI_decompress_lzss                   
+0000829e  __TI_decompress_none                   
 0000ffce  __TI_int22                             
 0000ffd0  __TI_int23                             
 0000ffd2  __TI_int24                             
@@ -1351,21 +1352,24 @@ ffffffff  __TI_pprof_out_hndl
 ffffffff  __TI_prof_data_size                    
 ffffffff  __TI_prof_data_start                   
 ffffffff  __c_args__                             
-00008212  __memcpy_far                           
+00008222  __memcpy_far                           
 00000001  __mpu_enable                           
-00008252  __mpu_init                             
-000082d6  _c_int00_noargs_mpu                    
+00008262  __mpu_init                             
+00008318  _c_int00_noargs_mpu                    
 0000fffe  _reset_vector                          
 00002f60  _stack                                 
-000082d4  _system_post_cinit                     
-000082d0  _system_pre_init                       
-000082ca  abort                                  
+000082f4  _system_post_cinit                     
+000082f0  _system_pre_init                       
+000082ea  abort                                  
+00002000  data_in                                
+00002002  data_out                               
 00008000  fram_rw_start                          
 00008000  fram_rx_start                          
 00000001  info_fram_protection                   
-00008104  main                                   
+00008106  main                                   
 00000001  program_fram_protection                
 00000000  start_protection_offset_address        
+000082da  transmit_I2C                           
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -2383,28 +2387,30 @@ address   name
 00000cba  SAC3IV                                 
 00000cba  SAC3IV_L                               
 00000cbb  SAC3IV_H                               
-00002000  Data_In                                
+00002000  data_in                                
+00002002  data_out                               
 00002f60  _stack                                 
 00003000  __STACK_END                            
 00008000  __TI_Handler_Table_Base                
 00008000  fram_rw_start                          
 00008000  fram_rx_start                          
 00008008  __TI_Handler_Table_Limit               
-0000800e  __TI_CINIT_Base                        
-00008016  __TI_CINIT_Limit                       
-00008016  __TI_decompress_lzss                   
-00008104  main                                   
-000081a8  __TI_auto_init_nobinit_nopinit_hold_wdt
-00008212  __memcpy_far                           
-00008252  __mpu_init                             
-0000828e  __TI_decompress_none                   
-000082ca  C$$EXIT                                
-000082ca  abort                                  
-000082d0  _system_pre_init                       
-000082d4  _system_post_cinit                     
-000082d6  _c_int00_noargs_mpu                    
+00008010  __TI_CINIT_Base                        
+00008018  __TI_CINIT_Limit                       
+00008018  __TI_decompress_lzss                   
+00008106  main                                   
+000081b8  __TI_auto_init_nobinit_nopinit_hold_wdt
+00008222  __memcpy_far                           
+00008262  __mpu_init                             
+0000829e  __TI_decompress_none                   
+000082da  transmit_I2C                           
+000082ea  C$$EXIT                                
+000082ea  abort                                  
+000082f0  _system_pre_init                       
+000082f4  _system_post_cinit                     
 000082f6  EUSCI_B1_I2C_ISR                       
-00008306  __TI_ISR_TRAP                          
+00008318  _c_int00_noargs_mpu                    
+00008338  __TI_ISR_TRAP                          
 0000ffce  __TI_int22                             
 0000ffd0  __TI_int23                             
 0000ffd2  __TI_int24                             
@@ -2435,4 +2441,4 @@ ffffffff  __TI_prof_data_size
 ffffffff  __TI_prof_data_start                   
 ffffffff  __c_args__                             
 
-[1062 symbols]
+[1064 symbols]

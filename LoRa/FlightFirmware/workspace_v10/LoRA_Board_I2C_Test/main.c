@@ -1,7 +1,15 @@
 #include <msp430.h> 
 
 //-----------------Globals-------------------
-int Data_In = 0;
+int data_in = 0;
+int data_out = 0;
+
+//------------------Functions---------------------------------------------------------------------
+void transmit_I2C(void){
+    UCB1CTLW0 |= UCTXSTT; // start condition
+    while ((UCB1IFG & UCSTPIFG) == 0); // Wait for STOP
+        UCB1IFG &= ~UCSTPIFG; // Clear STOP Flag
+}
 
 /**
  * main.c
@@ -20,8 +28,8 @@ int main(void)
     UCB1CTLW0 |= UCMODE_3;   // Put into I2C mode
     UCB1CTLW0 |= UCMST;      // Put into master mode
 
-    UCB1CTLW0 |= UCTR;    // Tx mode
-    UCB1I2CSA = 0x2;     // Slave address
+    UCB1CTLW0 &= ~UCTR;    // RX mode
+    UCB1I2CSA = 0x4A;     // Slave address
     UCB1CTLW1 |= UCASTP_2;   // Auto STOP when UCB1TBCNT reached
     UCB1TBCNT = 0x1;      // Set characters to be send (1 byte)
 
@@ -53,9 +61,13 @@ int main(void)
     __enable_interrupt(); // enable IRQs
 
     while(1){
-        UCB1CTLW0 |= UCTXSTT; // start condition
-        while ((UCB1IFG & UCSTPIFG) == 0); // Wait for STOP
-            UCB1IFG &= ~UCSTPIFG; // Clear STOP Flag
+
+        UCB1CTLW0 |= UCTR;    // TX mode
+        data_out = 0x0B; //get ID
+        transmit_I2C();
+
+        UCB1CTLW0 &= ~UCTR;    // RX mode
+        transmit_I2C();
     }
 
 	return 0;
@@ -66,10 +78,10 @@ __interrupt void EUSCI_B1_I2C_ISR(void){
 
     switch(UCB1IV){
     case 0x16:                  // ID 16: RXIFG1
-        Data_In = UCB1RXBUF;
+        data_in = UCB1RXBUF;
         break;
     case 0x18:                  // ID 18: TX
-        //UCB1TXBUF = button;
+        UCB1TXBUF = data_out;
         break;
     default:
         break;
