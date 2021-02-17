@@ -1,7 +1,7 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.launchbar.core.descriptorType.default\:LoRa,org.eclipse.launchbar.core.descriptorType.default\:loraD,org.eclipse.launchbar.core.descriptorType.default\:LoRA_Board_I2C_Test
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:LoRa,org.eclipse.launchbar.core.descriptorType.default\:loraD,org.eclipse.launchbar.core.descriptorType.default\:test_I2C,org.eclipse.launchbar.core.descriptorType.default\:LoRA_Board_I2C_Test
 eclipse.preferences.version=1
 org.eclipse.launchbar.core.descriptorType.default\:LoRA_Board_I2C_Test/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:LoRA_Board_I2C_Test/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
