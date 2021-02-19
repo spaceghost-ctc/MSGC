@@ -1,1 +1,1 @@
-"./main.obj" "../lnk_msp430fr2355.cmd" -lfrwp_init.a -llibc.a 
+"./base64.obj" "./main.obj" "./mcu.obj" "./spi.obj" "./sx1276.obj" "./uart.obj" "../lnk_msp430fr2355.cmd" -lfrwp_init.a -llibc.a 
