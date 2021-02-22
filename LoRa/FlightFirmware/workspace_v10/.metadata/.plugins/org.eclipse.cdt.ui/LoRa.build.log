@@ -1,8 +1,12 @@
 
-**** Build of configuration Debug for project LoRa ****
+**** Clean-only build of configuration Debug for project LoRa ****
 
-"C:\\ti\\ccs1011\\ccs\\utils\\bin\\gmake" -k -j 8 all -O 
+"C:\\ti\\ccs1020\\ccs\\utils\\bin\\gmake" -k -j 4 clean -O 
  
-gmake[1]: 'LoRa.out' is up to date.
+DEL /F  "LoRa.hex"  "LoRa.out" 
+DEL /F "main.obj" 
+DEL /F "main.d" 
+Finished clean
+ 
 
 **** Build Finished ****
