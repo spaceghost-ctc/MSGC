@@ -7476,3 +7476,28 @@ No USB FET was found
 !ENTRY com.ti.ccstudio.debug 1 0 2021-02-21 18:11:09.339
 !MESSAGE DS_ERROR: Error initializing emulator:
 No USB FET was found
+!SESSION 2021-02-22 14:06:14.266 -----------------------------------------------
+eclipse.buildId=4.14.0.I20191210-0610
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 1 0 2021-02-22 14:06:39.937
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 1 0 2021-02-22 14:06:39.981
+!MESSAGE debugServerDir=C:/ti/ccs1020/ccs/ccs_base/DebugServer
+
+!ENTRY com.ti.ccstudio.ui 1 0 2021-02-22 14:07:12.525
+!MESSAGE CCS IDE session started!
+	CCS build: 10.2.0.00009
+	CCS location: C:/ti/ccs1020/ccs
+	Workspace location: D:/GitHub/MSGC/LoRa/FlightFirmware/workspace_v10
+
+!ENTRY com.ti.ccstudio.project.ui.webcontent 1 0 2021-02-22 14:07:13.396
+!MESSAGE CCS HTTP adapter started! [ccs.port:54272] - Open 'http://localhost:54272/ide' in web browser to see listing of available APIs...
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-02-22 14:10:44.328
+!MESSAGE Indexed 'LoRa_I2C_BitBang' (1 sources, 6 headers) in 0.812 sec: 1,103 declarations; 1,756 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)

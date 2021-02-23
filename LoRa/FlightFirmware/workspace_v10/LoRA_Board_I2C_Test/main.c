@@ -24,8 +24,8 @@ char j;
 unsigned char crc;
 int temp_ext;
 int temp_int;
-long pressure = 0;
-long press_temp = 0;
+long long pressure = 0;
+long long press_temp = 0;
 unsigned long digital_pressure_temp = 0;
 unsigned long digital_pressure = 0;
 //---pressure coefficients for calculation
@@ -133,12 +133,37 @@ void reset_pressure(void){
 }
 
 void calculate_pressure(void){
-    long dT;
-    long OFF;
-    long SENS;
-    long temp;
+    signed long dT;
+    signed long long OFF;
+    signed long long temp;
+    signed long long SENS;
 
+    dT = coeffs[5];
+    dT = dT << 8;
+    dT = digital_pressure_temp - dT;
+    OFF = coeffs[2];
+    OFF = OFF << 17;
+    temp = coeffs[4];
+    temp = temp >> 6;
+    temp = temp * dT;
+    OFF = OFF + temp;
+    SENS = coeffs[1];
+    SENS = SENS << 16;
+    temp = coeffs[3];
+    temp = temp >> 7;
+    temp = temp * dT;
+    SENS = SENS + temp;
 
+    press_temp = coeffs[6] >> 4;
+    temp = dT >> 4;
+    press_temp = (temp*press_temp);
+    press_temp = press_temp >> 15;
+    press_temp = press_temp + 2000;
+    pressure = SENS >> 4;
+    temp = digital_pressure >> 4;
+    pressure = pressure*temp;
+    pressure = (pressure >> 13) - OFF;
+    pressure = pressure >> 15;
 
 }
 
@@ -164,7 +189,7 @@ int main(void)
 
     for(i = 0; i < 200; i++){}
 
-    PM5CTL0 |= LOCKLPM5; // Turn on GPIO
+    PM5CTL0 |= LOCKLPM5; // Turn off GPIO
 
 //------------------Configure I2C Master Mode---------------------------------------------------------------------
 	//------ 1. Software Reset
@@ -205,21 +230,21 @@ int main(void)
 
     __enable_interrupt(); // enable IRQs
 
-    reset_pressure();
+    //reset_pressure();
 
     while(1){
 
         //Temperature
-        //temp_ext = get_temperature(EXT_TEMP_ADDR);
-        //temp_int = get_temperature(INT_TEMP_ADDR);
+        temp_ext = get_temperature(EXT_TEMP_ADDR);
+        temp_int = get_temperature(INT_TEMP_ADDR);
 
         //Pressure
-        read_pressure_sens(CONV_PRESSURE);
+        /*read_pressure_sens(CONV_PRESSURE);
         digital_pressure = (digital_pressure_temp & 0x00FFFFFF);
         read_pressure_sens(CONV_TEMP);
         digital_pressure_temp = (digital_pressure_temp & 0x00FFFFFF);
         calculate_pressure();
-        for(i = 0; i < 10; i++){}
+        for(i = 0; i < 10; i++){}*/
     }
 
 	//return 0;
@@ -271,7 +296,7 @@ __interrupt void EUSCI_B1_I2C_ISR(void){
                 UCB1TXBUF = data_out;
                 data_tran = 1;
             }else if(data_tran == 1){
-                UCB1CTLW0 &= ~UCTR;
+                UCB1CTLW0 &= ~UCTR; // rx mode
                 UCB1CTLW0 |= UCTXSTT; // start condition
                 while((UCB1CTLW0 & UCTXSTT));
                 UCB1CTLW0 |= UCTXSTP; // stop condition
