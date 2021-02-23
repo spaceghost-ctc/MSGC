@@ -10,6 +10,9 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./RF95.obj" \
+"./SPI.obj" \
+"./inst.obj" \
 "./main.obj" \
 "../lnk_msp430fr2355.cmd" \
 $(GEN_CMDS__FLAG) \
@@ -121,42 +124,42 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-LoRA_Board_I2C_Test.out \
+LoRaMain.out \
 
 EXE_OUTPUTS__QUOTED += \
-"LoRA_Board_I2C_Test.out" \
+"LoRaMain.out" \
 
 BIN_OUTPUTS += \
-LoRA_Board_I2C_Test.hex \
+LoRaMain.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"LoRA_Board_I2C_Test.hex" \
+"LoRaMain.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "LoRA_Board_I2C_Test.out"
+	@$(MAKE) --no-print-directory -Onone "LoRaMain.out"
 
 # Tool invocations
-LoRA_Board_I2C_Test.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+LoRaMain.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: MSP430 Linker'
-	"C:/ti/ccs1011/ccs/tools/compiler/ti-cgt-msp430_20.2.1.LTS/bin/cl430" -vmspx -O2 --use_hw_mpy=F5 --advice:power=all --advice:hw_config=all --define=__MSP430FR2355__ --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 -z -m"LoRA_Board_I2C_Test.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccs1011/ccs/ccs_base/msp430/include" -i"C:/ti/ccs1011/ccs/ccs_base/msp430/lib/FR2xx" -i"C:/ti/ccs1011/ccs/tools/compiler/ti-cgt-msp430_20.2.1.LTS/lib" -i"C:/ti/ccs1011/ccs/tools/compiler/ti-cgt-msp430_20.2.1.LTS/include" --priority --reread_libs --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE --diag_wrap=off --display_error_number --warn_sections --xml_link_info="LoRA_Board_I2C_Test_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "LoRA_Board_I2C_Test.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1011/ccs/tools/compiler/ti-cgt-msp430_20.2.1.LTS/bin/cl430" -vmspx --use_hw_mpy=F5 --advice:power=all --advice:hw_config=all --define=__MSP430FR2355__ --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 -z -m"LoRaMain.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccs1011/ccs/ccs_base/msp430/include" -i"C:/ti/ccs1011/ccs/ccs_base/msp430/lib/FR2xx" -i"C:/ti/ccs1011/ccs/tools/compiler/ti-cgt-msp430_20.2.1.LTS/lib" -i"C:/ti/ccs1011/ccs/tools/compiler/ti-cgt-msp430_20.2.1.LTS/include" --priority --reread_libs --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE --diag_wrap=off --display_error_number --warn_sections --xml_link_info="LoRaMain_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "LoRaMain.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
-LoRA_Board_I2C_Test.hex: $(EXE_OUTPUTS)
+LoRaMain.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: MSP430 Hex Utility'
-	"C:/ti/ccs1011/ccs/tools/compiler/ti-cgt-msp430_20.2.1.LTS/bin/hex430" --memwidth=8 --romwidth=8 -o "LoRA_Board_I2C_Test.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccs1011/ccs/tools/compiler/ti-cgt-msp430_20.2.1.LTS/bin/hex430" --memwidth=8 --romwidth=8 -o "LoRaMain.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" 
-	-$(RM) "main.d" 
+	-$(RM) "RF95.obj" "SPI.obj" "inst.obj" "main.obj" 
+	-$(RM) "RF95.d" "SPI.d" "inst.d" "main.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
