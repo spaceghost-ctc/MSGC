@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v20.2.4                     
 ******************************************************************************
->> Linked Mon Feb 22 17:57:40 2021
+>> Linked Tue Feb 23 23:00:12 2021
 
 OUTPUT FILE NAME:   <LoRa_I2C_BitBang.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 00008464
+ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 00008b64
 
 
 MEMORY CONFIGURATION
@@ -16,8 +16,8 @@ MEMORY CONFIGURATION
   INFO                  00001800   00000200  00000000  00000200  RWIX
   TLVMEM                00001a00   00000200  00000000  00000200  RWIX
   BOOTCODE              00001c00   00000400  00000000  00000400  RWIX
-  RAM                   00002000   00001000  000000a6  00000f5a  RWIX
-  FRAM                  00008000   00007f80  0000048c  00007af4  RWIX
+  RAM                   00002000   00001000  000000e4  00000f1c  RWIX
+  FRAM                  00008000   00007f80  00000b8c  000073f4  RWIX
   JTAGSIGNATURE         0000ff80   00000004  00000004  00000000  RWIX  ffff 
   BSLSIGNATURE          0000ff84   00000004  00000004  00000000  RWIX  ffff 
   BSLCONFIGURATIONSIGNA 0000ff88   00000002  00000002  00000000  RWIX  ffff 
@@ -79,9 +79,6 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.data      0    00002000    00000004     UNINITIALIZED
-                  00002000    00000004     main.obj (.data)
-
 .TI.persistent 
 *          0    00008000    00000000     UNINITIALIZED
 
@@ -91,8 +88,7 @@ section   page    origin      length       input sections
 
 .cinit     0    00008000    0000002a     
                   00008000    0000000c     (__TI_handler_table)
-                  0000800c    00000007     (.cinit..data.load) [load image, compression = lzss]
-                  00008013    00000001     --HOLE-- [fill = 0]
+                  0000800c    00000008     (.cinit..data.load) [load image, compression = lzss]
                   00008014    00000006     (.cinit..bss.load) [load image, compression = zero_init]
                   0000801a    00000010     (__TI_cinit_table)
 
@@ -111,36 +107,62 @@ section   page    origin      length       input sections
 
 .const     0    0000802a    00000000     UNINITIALIZED
 
-.text      0    0000802a    0000043a     
-                  0000802a    000000ee     rts430x_lc_sd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  00008118    0000006c     main.obj (.text:main)
-                  00008184    0000006a     rts430x_lc_sd_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
-                  000081ee    00000050     main.obj (.text:i2c_rx)
-                  0000823e    00000040     rts430x_lc_sd_eabi.lib : cpy_util.asm.obj (.text:__memcpy_far)
-                  0000827e    0000003e                            : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  000082bc    0000003e     main.obj (.text:i2c_read_ack)
-                  000082fa    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
-                  00008336    0000003c     rts430x_lc_sd_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  00008372    00000034     main.obj (.text:i2c_stop)
-                  000083a6    00000028     main.obj (.text:i2c_tx)
-                  000083ce    00000024     main.obj (.text:i2c_start)
-                  000083f2    00000022     main.obj (.text:i2c_nack)
-                  00008414    0000001e     main.obj (.text:i2c_clock_cycle)
-                  00008432    0000000e     main.obj (.text:i2c_tx_address)
-                  00008440    0000000c     main.obj (.text:i2c_tx_high_bit)
-                  0000844c    0000000c     main.obj (.text:i2c_tx_low_bit)
-                  00008458    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
-                  0000845e    00000004                            : pre_init.c.obj (.text:_system_pre_init)
-                  00008462    00000002                            : startup.c.obj (.text:_system_post_cinit)
+.text      0    0000802a    00000b3a     
+                  0000802a    00000264     main.obj (.text:main)
+                  0000828e    0000018c     main.obj (.text:convert_pressure)
+                  0000841a    000000ee     rts430x_lc_sd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00008508    0000006c     main.obj (.text:get_pressure_coeff)
+                  00008574    0000006a     rts430x_lc_sd_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
+                  000085de    00000066     main.obj (.text:i2c_read_ack)
+                  00008644    00000062     main.obj (.text:i2c_start)
+                  000086a6    00000060     main.obj (.text:i2c_rx)
+                  00008706    0000005c     rts430x_lc_sd_eabi.lib : mult64_f5hw.asm.obj (.text:__mpyll)
+                  00008762    00000048     main.obj (.text:i2c_rx_pressure)
+                  000087aa    00000044     main.obj (.text:i2c_stop)
+                  000087ee    00000042     main.obj (.text:i2c_nack)
+                  00008830    00000040     rts430x_lc_sd_eabi.lib : cpy_util.asm.obj (.text:__memcpy_far)
+                  00008870    00000040                            : asr64.c.obj (.text:__mspabi_srall)
+                  000088b0    0000003e                            : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  000088ee    0000003e                            : asr32.asm.obj (.text:l_asr_const)
+                  0000892c    0000003e                            : lsl32.asm.obj (.text:l_lsl_const)
+                  0000896a    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
+                  000089a6    0000003c     rts430x_lc_sd_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  000089e2    0000003c     main.obj (.text:i2c_ack)
+                  00008a1e    0000003a     rts430x_lc_sd_eabi.lib : lsl64.c.obj (.text:__mspabi_sllll)
+                  00008a58    0000002a     main.obj (.text:read_accel)
+                  00008a82    00000028     main.obj (.text:i2c_tx)
+                  00008aaa    00000026     main.obj (.text:i2c_clock_cycle)
+                  00008ad0    00000026     main.obj (.text:read_temp)
+                  00008af6    00000024     rts430x_lc_sd_eabi.lib : mult32_f5hw.asm.obj (.text)
+                  00008b1a    00000018     main.obj (.text:i2c_tx_pressure)
+                  00008b32    0000000e     main.obj (.text:i2c_tx_address)
+                  00008b40    0000000c     main.obj (.text:i2c_tx_high_bit)
+                  00008b4c    0000000c     main.obj (.text:i2c_tx_low_bit)
+                  00008b58    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
+                  00008b5e    00000004                            : pre_init.c.obj (.text:_system_pre_init)
+                  00008b62    00000002                            : startup.c.obj (.text:_system_post_cinit)
 
 .text:_isr 
-*          0    00008464    00000028     
-                  00008464    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
-                  00008484    00000008                            : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
+*          0    00008b64    00000028     
+                  00008b64    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
+                  00008b84    00000008                            : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
 
-.bss       0    00002004    00000002     UNINITIALIZED
-                  00002004    00000001     (.common:i)
-                  00002005    00000001     (.common:j)
+.bss       0    00002000    00000030     UNINITIALIZED
+                  00002000    00000010     (.common:c)
+                  00002010    00000008     (.common:OFF)
+                  00002018    00000004     (.common:dT)
+                  0000201c    00000004     (.common:digital_press)
+                  00002020    00000004     (.common:press_temp)
+                  00002024    00000002     (.common:accel_x)
+                  00002026    00000002     (.common:accel_y)
+                  00002028    00000002     (.common:ext_temp)
+                  0000202a    00000002     (.common:i)
+                  0000202c    00000002     (.common:int_temp)
+                  0000202e    00000001     (.common:j)
+                  0000202f    00000001     (.common:k)
+
+.data      0    00002030    00000014     UNINITIALIZED
+                  00002030    00000014     main.obj (.data)
 
 .stack     0    00002f60    000000a0     UNINITIALIZED
                   00002f60    00000002     rts430x_lc_sd_eabi.lib : boot.c.obj (.stack)
@@ -252,9 +274,9 @@ MODULE SUMMARY
        Module                       code   ro data   rw data
        ------                       ----   -------   -------
     .\
-       main.obj                     480    0         6      
+       main.obj                     1898   0         68     
     +--+----------------------------+------+---------+---------+
-       Total:                       480    0         6      
+       Total:                       1898   0         68     
                                                             
     C:\ti\ccs1020\ccs\ccs_base\msp430\lib\FR2xx\FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib
        frwp_init.obj                60     0         0      
@@ -264,9 +286,15 @@ MODULE SUMMARY
     C:\ti\ccs1020\ccs\tools\compiler\ti-cgt-msp430_20.2.4.LTS\lib\rts430x_lc_sd_eabi.lib
        copy_decompress_lzss.c.obj   238    0         0      
        autoinit.c.obj               106    0         0      
+       mult64_f5hw.asm.obj          92     0         0      
+       asr64.c.obj                  64     0         0      
        cpy_util.asm.obj             64     0         0      
+       asr32.asm.obj                62     0         0      
        copy_zero_init.c.obj         62     0         0      
+       lsl32.asm.obj                62     0         0      
        copy_decompress_none.c.obj   60     0         0      
+       lsl64.c.obj                  58     0         0      
+       mult32_f5hw.asm.obj          36     0         0      
        boot.c.obj                   32     2         0      
        isr_trap.asm.obj             8      0         0      
        exit.c.obj                   6      0         0      
@@ -297,19 +325,19 @@ MODULE SUMMARY
        int45.asm.obj                0      2         0      
        startup.c.obj                2      0         0      
     +--+----------------------------+------+---------+---------+
-       Total:                       582    50        0      
+       Total:                       956    50        0      
                                                             
        Stack:                       0      0         160    
-       Linker Generated:            0      41        0      
+       Linker Generated:            0      42        0      
     +--+----------------------------+------+---------+---------+
-       Grand Total:                 1122   91        166    
+       Grand Total:                 2914   92        228    
 
 
 LINKER GENERATED COPY TABLES
 
 __TI_cinit_table @ 0000801a records: 2, size/record: 8, table size: 16
-	.data: load addr=0000800c, load size=00000007 bytes, run addr=00002000, run size=00000004 bytes, compression=lzss
-	.bss: load addr=00008014, load size=00000006 bytes, run addr=00002004, run size=00000002 bytes, compression=zero_init
+	.data: load addr=0000800c, load size=00000008 bytes, run addr=00002030, run size=00000014 bytes, compression=lzss
+	.bss: load addr=00008014, load size=00000006 bytes, run addr=00002000, run size=00000030 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
@@ -402,7 +430,7 @@ address   name
 00000672  BAKMEM9                                
 00000673  BAKMEM9_H                              
 00000672  BAKMEM9_L                              
-00008458  C$$EXIT                                
+00008b58  C$$EXIT                                
 000002ee  CAPTIOCTL                              
 000002ef  CAPTIOCTL_H                            
 000002ee  CAPTIOCTL_L                            
@@ -547,6 +575,7 @@ address   name
 000004c2  MPYS_L                                 
 000004c1  MPY_H                                  
 000004c0  MPY_L                                  
+00002010  OFF                                    
 000004c8  OP2                                    
 000004e2  OP2H                                   
 000004e3  OP2H_H                                 
@@ -959,6 +988,7 @@ address   name
 00000cb2  SAC3PGA                                
 00000cb3  SAC3PGA_H                              
 00000cb2  SAC3PGA_L                              
+0000203c  SENS                                   
 00000100  SFRIE1                                 
 00000101  SFRIE1_H                               
 00000100  SFRIE1_L                               
@@ -1337,10 +1367,10 @@ address   name
 0000802a  __TI_CINIT_Limit                       
 00008000  __TI_Handler_Table_Base                
 0000800c  __TI_Handler_Table_Limit               
-00008484  __TI_ISR_TRAP                          
-00008184  __TI_auto_init_nobinit_nopinit_hold_wdt
-0000802a  __TI_decompress_lzss                   
-00008336  __TI_decompress_none                   
+00008b84  __TI_ISR_TRAP                          
+00008574  __TI_auto_init_nobinit_nopinit_hold_wdt
+0000841a  __TI_decompress_lzss                   
+000089a6  __TI_decompress_none                   
 0000ffce  __TI_int22                             
 0000ffd0  __TI_int23                             
 0000ffd2  __TI_int24                             
@@ -1368,36 +1398,88 @@ address   name
 ffffffff  __TI_pprof_out_hndl                    
 ffffffff  __TI_prof_data_size                    
 ffffffff  __TI_prof_data_start                   
-0000827e  __TI_zero_init_nomemset                
+000088b0  __TI_zero_init_nomemset                
 ffffffff  __c_args__                             
-0000823e  __memcpy_far                           
+00008830  __memcpy_far                           
 00000001  __mpu_enable                           
-000082fa  __mpu_init                             
-00008464  _c_int00_noargs_mpu                    
+0000896a  __mpu_init                             
+00008af6  __mspabi_mpyl_f5hw                     
+00008706  __mspabi_mpyll_f5hw                    
+00008964  __mspabi_slll_1                        
+00008940  __mspabi_slll_10                       
+0000893c  __mspabi_slll_11                       
+00008938  __mspabi_slll_12                       
+00008934  __mspabi_slll_13                       
+00008930  __mspabi_slll_14                       
+0000892c  __mspabi_slll_15                       
+00008960  __mspabi_slll_2                        
+0000895c  __mspabi_slll_3                        
+00008958  __mspabi_slll_4                        
+00008954  __mspabi_slll_5                        
+00008950  __mspabi_slll_6                        
+0000894c  __mspabi_slll_7                        
+00008948  __mspabi_slll_8                        
+00008944  __mspabi_slll_9                        
+00008a1e  __mspabi_sllll                         
+00008926  __mspabi_sral_1                        
+00008902  __mspabi_sral_10                       
+000088fe  __mspabi_sral_11                       
+000088fa  __mspabi_sral_12                       
+000088f6  __mspabi_sral_13                       
+000088f2  __mspabi_sral_14                       
+000088ee  __mspabi_sral_15                       
+00008922  __mspabi_sral_2                        
+0000891e  __mspabi_sral_3                        
+0000891a  __mspabi_sral_4                        
+00008916  __mspabi_sral_5                        
+00008912  __mspabi_sral_6                        
+0000890e  __mspabi_sral_7                        
+0000890a  __mspabi_sral_8                        
+00008906  __mspabi_sral_9                        
+00008870  __mspabi_srall                         
+00008b64  _c_int00_noargs_mpu                    
 0000fffe  _reset_vector                          
 00002f60  _stack                                 
-00008462  _system_post_cinit                     
-0000845e  _system_pre_init                       
-00008458  abort                                  
+00008b62  _system_post_cinit                     
+00008b5e  _system_pre_init                       
+00008b58  abort                                  
+00002024  accel_x                                
+00002026  accel_y                                
+00002032  accel_z                                
+00002000  c                                      
+0000828e  convert_pressure                       
+00002018  dT                                     
+0000201c  digital_press                          
+00002034  digital_press_temp                     
+00002028  ext_temp                               
 00008000  fram_rw_start                          
 00008000  fram_rx_start                          
-00002004  i                                      
-00008414  i2c_clock_cycle                        
-000083f2  i2c_nack                               
-000082bc  i2c_read_ack                           
-000081ee  i2c_rx                                 
-000083ce  i2c_start                              
-00002000  i2c_status                             
-00008372  i2c_stop                               
-000083a6  i2c_tx                                 
-00008432  i2c_tx_address                         
-00008440  i2c_tx_high_bit                        
-0000844c  i2c_tx_low_bit                         
+00008508  get_pressure_coeff                     
+0000202a  i                                      
+000089e2  i2c_ack                                
+00008aaa  i2c_clock_cycle                        
+000087ee  i2c_nack                               
+000085de  i2c_read_ack                           
+000086a6  i2c_rx                                 
+00008762  i2c_rx_pressure                        
+00008644  i2c_start                              
+00002030  i2c_status                             
+000087aa  i2c_stop                               
+00008a82  i2c_tx                                 
+00008b32  i2c_tx_address                         
+00008b40  i2c_tx_high_bit                        
+00008b4c  i2c_tx_low_bit                         
+00008b1a  i2c_tx_pressure                        
 00000001  info_fram_protection                   
-00002002  int_temp                               
-00002005  j                                      
-00008118  main                                   
+0000202c  int_temp                               
+0000202e  j                                      
+0000202f  k                                      
+0000802a  main                                   
+00002020  press_temp                             
+00002038  pressure                               
 00000001  program_fram_protection                
+00008a58  read_accel                             
+00008ad0  read_temp                              
 00000000  start_protection_offset_address        
 
 
@@ -2416,10 +2498,23 @@ address   name
 00000cba  SAC3IV                                 
 00000cba  SAC3IV_L                               
 00000cbb  SAC3IV_H                               
-00002000  i2c_status                             
-00002002  int_temp                               
-00002004  i                                      
-00002005  j                                      
+00002000  c                                      
+00002010  OFF                                    
+00002018  dT                                     
+0000201c  digital_press                          
+00002020  press_temp                             
+00002024  accel_x                                
+00002026  accel_y                                
+00002028  ext_temp                               
+0000202a  i                                      
+0000202c  int_temp                               
+0000202e  j                                      
+0000202f  k                                      
+00002030  i2c_status                             
+00002032  accel_z                                
+00002034  digital_press_temp                     
+00002038  pressure                               
+0000203c  SENS                                   
 00002f60  _stack                                 
 00003000  __STACK_END                            
 00008000  __TI_Handler_Table_Base                
@@ -2428,29 +2523,70 @@ address   name
 0000800c  __TI_Handler_Table_Limit               
 0000801a  __TI_CINIT_Base                        
 0000802a  __TI_CINIT_Limit                       
-0000802a  __TI_decompress_lzss                   
-00008118  main                                   
-00008184  __TI_auto_init_nobinit_nopinit_hold_wdt
-000081ee  i2c_rx                                 
-0000823e  __memcpy_far                           
-0000827e  __TI_zero_init_nomemset                
-000082bc  i2c_read_ack                           
-000082fa  __mpu_init                             
-00008336  __TI_decompress_none                   
-00008372  i2c_stop                               
-000083a6  i2c_tx                                 
-000083ce  i2c_start                              
-000083f2  i2c_nack                               
-00008414  i2c_clock_cycle                        
-00008432  i2c_tx_address                         
-00008440  i2c_tx_high_bit                        
-0000844c  i2c_tx_low_bit                         
-00008458  C$$EXIT                                
-00008458  abort                                  
-0000845e  _system_pre_init                       
-00008462  _system_post_cinit                     
-00008464  _c_int00_noargs_mpu                    
-00008484  __TI_ISR_TRAP                          
+0000802a  main                                   
+0000828e  convert_pressure                       
+0000841a  __TI_decompress_lzss                   
+00008508  get_pressure_coeff                     
+00008574  __TI_auto_init_nobinit_nopinit_hold_wdt
+000085de  i2c_read_ack                           
+00008644  i2c_start                              
+000086a6  i2c_rx                                 
+00008706  __mspabi_mpyll_f5hw                    
+00008762  i2c_rx_pressure                        
+000087aa  i2c_stop                               
+000087ee  i2c_nack                               
+00008830  __memcpy_far                           
+00008870  __mspabi_srall                         
+000088b0  __TI_zero_init_nomemset                
+000088ee  __mspabi_sral_15                       
+000088f2  __mspabi_sral_14                       
+000088f6  __mspabi_sral_13                       
+000088fa  __mspabi_sral_12                       
+000088fe  __mspabi_sral_11                       
+00008902  __mspabi_sral_10                       
+00008906  __mspabi_sral_9                        
+0000890a  __mspabi_sral_8                        
+0000890e  __mspabi_sral_7                        
+00008912  __mspabi_sral_6                        
+00008916  __mspabi_sral_5                        
+0000891a  __mspabi_sral_4                        
+0000891e  __mspabi_sral_3                        
+00008922  __mspabi_sral_2                        
+00008926  __mspabi_sral_1                        
+0000892c  __mspabi_slll_15                       
+00008930  __mspabi_slll_14                       
+00008934  __mspabi_slll_13                       
+00008938  __mspabi_slll_12                       
+0000893c  __mspabi_slll_11                       
+00008940  __mspabi_slll_10                       
+00008944  __mspabi_slll_9                        
+00008948  __mspabi_slll_8                        
+0000894c  __mspabi_slll_7                        
+00008950  __mspabi_slll_6                        
+00008954  __mspabi_slll_5                        
+00008958  __mspabi_slll_4                        
+0000895c  __mspabi_slll_3                        
+00008960  __mspabi_slll_2                        
+00008964  __mspabi_slll_1                        
+0000896a  __mpu_init                             
+000089a6  __TI_decompress_none                   
+000089e2  i2c_ack                                
+00008a1e  __mspabi_sllll                         
+00008a58  read_accel                             
+00008a82  i2c_tx                                 
+00008aaa  i2c_clock_cycle                        
+00008ad0  read_temp                              
+00008af6  __mspabi_mpyl_f5hw                     
+00008b1a  i2c_tx_pressure                        
+00008b32  i2c_tx_address                         
+00008b40  i2c_tx_high_bit                        
+00008b4c  i2c_tx_low_bit                         
+00008b58  C$$EXIT                                
+00008b58  abort                                  
+00008b5e  _system_pre_init                       
+00008b62  _system_post_cinit                     
+00008b64  _c_int00_noargs_mpu                    
+00008b84  __TI_ISR_TRAP                          
 0000ffce  __TI_int22                             
 0000ffd0  __TI_int23                             
 0000ffd2  __TI_int24                             
@@ -2481,4 +2617,4 @@ ffffffff  __TI_prof_data_size
 ffffffff  __TI_prof_data_start                   
 ffffffff  __c_args__                             
 
-[1075 symbols]
+[1129 symbols]

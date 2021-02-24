@@ -1,7 +1,7 @@
 ******************************************************************************
-                  MSP430 Linker PC v20.2.1                     
+                  MSP430 Linker PC v20.2.2                     
 ******************************************************************************
->> Linked Mon Feb 22 18:28:32 2021
+>> Linked Mon Feb 22 19:12:20 2021
 
 OUTPUT FILE NAME:   <LoRaMain.out>
 ENTRY POINT SYMBOL: "_c_int00_noinit_noargs_mpu"  address: 00008144
@@ -234,12 +234,12 @@ MODULE SUMMARY
     +--+------------------+------+---------+---------+
        Total:             254    2         0      
                                                   
-    C:\ti\ccs1011\ccs\ccs_base\msp430\lib\FR2xx\FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib
+    C:\ti\ccs1020\ccs\ccs_base\msp430\lib\FR2xx\FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib
        frwp_init.obj      60     0         0      
     +--+------------------+------+---------+---------+
        Total:             60     0         0      
                                                   
-    C:\ti\ccs1011\ccs\tools\compiler\ti-cgt-msp430_20.2.1.LTS\lib\rts430x_lc_sd_eabi.lib
+    C:\ti\ccs1020\ccs\tools\compiler\ti-cgt-msp430_20.2.2.LTS\lib\rts430x_lc_sd_eabi.lib
        boot.c.obj         24     2         0      
        isr_trap.asm.obj   8      0         0      
        exit.c.obj         6      0         0      
