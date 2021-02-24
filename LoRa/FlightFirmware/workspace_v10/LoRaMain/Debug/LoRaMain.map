@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v20.2.1                     
 ******************************************************************************
->> Linked Mon Feb 22 18:28:32 2021
+>> Linked Mon Feb 22 19:14:21 2021
 
 OUTPUT FILE NAME:   <LoRaMain.out>
-ENTRY POINT SYMBOL: "_c_int00_noinit_noargs_mpu"  address: 00008144
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs_mpu"  address: 0000818e
 
 
 MEMORY CONFIGURATION
@@ -17,7 +17,7 @@ MEMORY CONFIGURATION
   TLVMEM                00001a00   00000200  00000000  00000200  RWIX
   BOOTCODE              00001c00   00000400  00000000  00000400  RWIX
   RAM                   00002000   00001000  000000a0  00000f60  RWIX
-  FRAM                  00008000   00007f80  00000164  00007e1c  RWIX
+  FRAM                  00008000   00007f80  000001ae  00007dd2  RWIX
   JTAGSIGNATURE         0000ff80   00000004  00000004  00000000  RWIX  ffff 
   BSLSIGNATURE          0000ff84   00000004  00000004  00000000  RWIX  ffff 
   BSLCONFIGURATIONSIGNA 0000ff88   00000002  00000002  00000000  RWIX  ffff 
@@ -103,20 +103,20 @@ section   page    origin      length       input sections
 
 .const     0    00008000    00000000     UNINITIALIZED
 
-.text      0    00008000    000000fa     
-                  00008000    00000080     inst.obj (.text:mcu_init)
-                  00008080    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
-                  000080bc    00000020     main.obj (.text:main)
-                  000080dc    0000000c     SPI.obj (.text:spi_send)
-                  000080e8    00000008     SPI.obj (.text:spi_txready)
-                  000080f0    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
-                  000080f6    00000004                            : pre_init.c.obj (.text:_system_pre_init)
+.text      0    00008000    00000144     
+                  00008000    000000ca     inst.obj (.text:mcu_init)
+                  000080ca    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
+                  00008106    00000020     main.obj (.text:main)
+                  00008126    0000000c     SPI.obj (.text:spi_send)
+                  00008132    00000008     SPI.obj (.text:spi_txready)
+                  0000813a    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
+                  00008140    00000004                            : pre_init.c.obj (.text:_system_pre_init)
 
 .text:_isr 
-*          0    000080fa    0000006a     
-                  000080fa    0000004a     main.obj (.text:_isr:ISR_TB0_Overflow)
-                  00008144    00000018     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noinit_noargs_mpu)
-                  0000815c    00000008                            : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
+*          0    00008144    0000006a     
+                  00008144    0000004a     main.obj (.text:_isr:ISR_TB0_Overflow)
+                  0000818e    00000018     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noinit_noargs_mpu)
+                  000081a6    00000008                            : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
 
 .stack     0    00002f60    000000a0     UNINITIALIZED
                   00002f60    00000002     rts430x_lc_sd_eabi.lib : boot.c.obj (.stack)
@@ -228,11 +228,11 @@ MODULE SUMMARY
        Module             code   ro data   rw data
        ------             ----   -------   -------
     .\
-       inst.obj           128    0         0      
+       inst.obj           202    0         0      
        main.obj           106    2         0      
        SPI.obj            20     0         0      
     +--+------------------+------+---------+---------+
-       Total:             254    2         0      
+       Total:             328    2         0      
                                                   
     C:\ti\ccs1011\ccs\ccs_base\msp430\lib\FR2xx\FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib
        frwp_init.obj      60     0         0      
@@ -272,7 +272,7 @@ MODULE SUMMARY
                                                   
        Stack:             0      0         160    
     +--+------------------+------+---------+---------+
-       Grand Total:       356    50        160    
+       Grand Total:       430    50        160    
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
@@ -357,7 +357,7 @@ address   name
 00000672  BAKMEM9                        
 00000673  BAKMEM9_H                      
 00000672  BAKMEM9_L                      
-000080f0  C$$EXIT                        
+0000813a  C$$EXIT                        
 000002ee  CAPTIOCTL                      
 000002ef  CAPTIOCTL_H                    
 000002ee  CAPTIOCTL_L                    
@@ -463,7 +463,7 @@ address   name
 000006c0  ICCSC                          
 000006c1  ICCSC_H                        
 000006c0  ICCSC_L                        
-000080fa  ISR_TB0_Overflow               
+00008144  ISR_TB0_Overflow               
 000004c4  MAC                            
 000004da  MAC32H                         
 000004db  MAC32H_H                       
@@ -1289,7 +1289,7 @@ address   name
 000001cc  WDTCTL_L                       
 00003000  __STACK_END                    
 000000a0  __STACK_SIZE                   
-0000815c  __TI_ISR_TRAP                  
+000081a6  __TI_ISR_TRAP                  
 0000ffce  __TI_int22                     
 0000ffd0  __TI_int23                     
 0000ffd2  __TI_int24                     
@@ -1319,20 +1319,20 @@ ffffffff  __TI_prof_data_size
 ffffffff  __TI_prof_data_start           
 ffffffff  __c_args__                     
 00000001  __mpu_enable                   
-00008080  __mpu_init                     
-00008144  _c_int00_noinit_noargs_mpu     
+000080ca  __mpu_init                     
+0000818e  _c_int00_noinit_noargs_mpu     
 0000fffe  _reset_vector                  
 00002f60  _stack                         
-000080f6  _system_pre_init               
-000080f0  abort                          
+00008140  _system_pre_init               
+0000813a  abort                          
 00008000  fram_rw_start                  
 00008000  fram_rx_start                  
 00000001  info_fram_protection           
-000080bc  main                           
+00008106  main                           
 00008000  mcu_init                       
 00000001  program_fram_protection        
-000080dc  spi_send                       
-000080e8  spi_txready                    
+00008126  spi_send                       
+00008132  spi_txready                    
 00000000  start_protection_offset_address
 
 
@@ -2356,16 +2356,16 @@ address   name
 00008000  fram_rw_start                  
 00008000  fram_rx_start                  
 00008000  mcu_init                       
-00008080  __mpu_init                     
-000080bc  main                           
-000080dc  spi_send                       
-000080e8  spi_txready                    
-000080f0  C$$EXIT                        
-000080f0  abort                          
-000080f6  _system_pre_init               
-000080fa  ISR_TB0_Overflow               
-00008144  _c_int00_noinit_noargs_mpu     
-0000815c  __TI_ISR_TRAP                  
+000080ca  __mpu_init                     
+00008106  main                           
+00008126  spi_send                       
+00008132  spi_txready                    
+0000813a  C$$EXIT                        
+0000813a  abort                          
+00008140  _system_pre_init               
+00008144  ISR_TB0_Overflow               
+0000818e  _c_int00_noinit_noargs_mpu     
+000081a6  __TI_ISR_TRAP                  
 0000ffce  __TI_int22                     
 0000ffd0  __TI_int23                     
 0000ffd2  __TI_int24                     

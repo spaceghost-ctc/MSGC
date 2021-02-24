@@ -11,36 +11,42 @@ CMD_SRCS += \
 C_SRCS += \
 ../RF95.c \
 ../SPI.c \
+../UART.c \
 ../inst.c \
 ../main.c 
 
 C_DEPS += \
 ./RF95.d \
 ./SPI.d \
+./UART.d \
 ./inst.d \
 ./main.d 
 
 OBJS += \
 ./RF95.obj \
 ./SPI.obj \
+./UART.obj \
 ./inst.obj \
 ./main.obj 
 
 OBJS__QUOTED += \
 "RF95.obj" \
 "SPI.obj" \
+"UART.obj" \
 "inst.obj" \
 "main.obj" 
 
 C_DEPS__QUOTED += \
 "RF95.d" \
 "SPI.d" \
+"UART.d" \
 "inst.d" \
 "main.d" 
 
 C_SRCS__QUOTED += \
 "../RF95.c" \
 "../SPI.c" \
+"../UART.c" \
 "../inst.c" \
 "../main.c" 
 

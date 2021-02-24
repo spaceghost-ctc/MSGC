@@ -7,6 +7,9 @@
 #define MISO    BIT2
 #define NSS     BIT0
 
+#define RXD    BIT6
+#define TXD    BIT7
+
 void mcu_init() {
     //  INITIALIZING uController with SPI, UART, I2C, and Timers
     //  INITIALIZING SPI
@@ -37,6 +40,21 @@ void mcu_init() {
 
 
     //  INITIALIZING UART
+    UCA0CTLW0 = UCSWRST;        //  Placing UCA0CTLW0 into SW reset
+    UCA0CTLW0 |= UCSSEL__SMCLK;
+    UCA0CTLW0 |= UCSYNC;
+    UCA0CTLW0 |= UCSPB;         //  Two stop bits
+    UCA0CTLW0 |= UC7BIT;        //  8-bit mode
+    UCA0CTLW0 |= UCMSB;         //  MSB first
+    UCA0BR0 |= 0x82;            //  Baud rate set to 9600 on SMCLK
+    UCA0BR1 |= 0x06;
+
+    P1SEL1 &=  RXD;            // P1.6 UCA0RXD input
+    P1SEL0 |= ~RXD;
+    P1SEL1 &=  TXD;            // P1.7 UCA0TXD output
+    P1SEL0 |= ~TXD;
+
+    UCA0CTLW0 &= ~UCSWRST;      //  UART operation Ready
     //  INITIALIZING I2C
     //  INITIALIZING CLOCK
     //  OTHER PORTS

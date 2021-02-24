@@ -1,1 +1,1 @@
-"./RF95.obj" "./SPI.obj" "./inst.obj" "./main.obj" "../lnk_msp430fr2355.cmd" -lfrwp_init.a -llibc.a 
+"./RF95.obj" "./SPI.obj" "./UART.obj" "./inst.obj" "./main.obj" "../lnk_msp430fr2355.cmd" -lfrwp_init.a -llibc.a 

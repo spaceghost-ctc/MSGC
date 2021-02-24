@@ -12,6 +12,7 @@ GEN_CMDS__FLAG :=
 ORDERED_OBJS += \
 "./RF95.obj" \
 "./SPI.obj" \
+"./UART.obj" \
 "./inst.obj" \
 "./main.obj" \
 "../lnk_msp430fr2355.cmd" \
@@ -158,8 +159,8 @@ LoRaMain.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "RF95.obj" "SPI.obj" "inst.obj" "main.obj" 
-	-$(RM) "RF95.d" "SPI.d" "inst.d" "main.d" 
+	-$(RM) "RF95.obj" "SPI.obj" "UART.obj" "inst.obj" "main.obj" 
+	-$(RM) "RF95.d" "SPI.d" "UART.d" "inst.d" "main.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
