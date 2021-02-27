@@ -25,8 +25,8 @@ int main(void)
 {
 	WDTCTL = WDTPW | WDTHOLD;	// stop watchdog timer
 	
-    P6DIR |= BIT2; // LED Power-on
-    P6OUT &= ~BIT2; //set LED on when powered
+    P6DIR |= BIT1; // LED Power-on
+    P6OUT &= ~BIT1; //set LED on when powered
 
 	UCA0CTLW0 |= UCSWRST; //put A0 in software reset
 
@@ -59,16 +59,18 @@ int main(void)
 	}
 
 	k = 0;
+	GPS_GNGGA[0] = '$';
 
 	while(1){
 	    //Example of how to send the character array
 	    for(k = 0; k < 100; k++){
-	        UCA0TXBUF = GPS_GNGGA[k]; //Turn UCA0TXBUF to whatever variable you want to store the data in
+	        //UCA0TXBUF = GPS_GNGGA[k]; //Turn UCA0TXBUF to whatever variable you want to store the data in
 	        if(GPS_GNGGA[k] == '\n'){
 	            k = 0;
 	        }
 	        for(i=0; i<150;i++){} //this line was a delay for UART transmission, you may be able to remove if using a different protocol (i.e. I2C, SPI)
 	    }
+	    for(i=0; i<250;i++){} //delay so we aren't sending too often (can remove if other code delays enough already)
 
 
 	}
@@ -78,10 +80,11 @@ int main(void)
 
 #pragma vector=EUSCI_A0_VECTOR
 __interrupt void EUSCI_A0_RX_ISR(void){
-    GPS_GNGGA[j] = UCA0RXBUF;
-    if(GPS_GNGGA[j] == '\n'){ //get packets divided by new line
+    UCA0TXBUF = UCA0RXBUF;
+    //GPS_GNGGA[j] = UCA0RXBUF;
+    if(GPS_GNGGA[j] == '\n' || j == 99){ //get packets divided by new line, or prevent overflow
         j = 0;
-        P6OUT ^= BIT2; //toggle LED
+        P6OUT ^= BIT1; //toggle LED
     }else{
         j++;
     }
