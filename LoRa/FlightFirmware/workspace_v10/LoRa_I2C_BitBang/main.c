@@ -1,4 +1,6 @@
 #include <msp430.h> 
+
+//I2C definitions for readability
 #define SCL BIT7
 #define SDA BIT6
 #define WRITE_MODE 0
@@ -24,34 +26,38 @@
 
 //--------------Globals--------------------
 char j, k;
-char i2c_status = 0x00; // 0b00000000 -- | 0 | 0 | 0 | 0 || 0 | 0 | 0 | 1-NAK |
-char temp_config_int, temp_config_ext;
+char i2c_status = 0x00; // 0b00000000 -- | 0 | 0 | 0 | 0 || 0 | 0 | 0 | 1-NAK | (currently unused)
+// char temp_config_int, temp_config_ext; //uncomment this line if uncommenting the lines that get the config of the temp sensors
 int i;
-int int_temp, ext_temp, accel_x, accel_y, accel_z = 0;
-unsigned int c[8];
-unsigned long digital_press, digital_press_temp = 0;
-long dT, press_temp, pressure = 0;
-long long OFF, SENS = 0;
+int int_temp, ext_temp, accel_x, accel_y, accel_z = 0; //actual temperature (internal and external) and acceleration values on each axis
+unsigned int c[8]; //coefficients for the pressure sensor
+unsigned long digital_press, digital_press_temp = 0; //these are the variables that are used in calculating the pressure, not the actual pressure values
+long dT, press_temp, pressure = 0; //actual temperature from pressure sensor and pressure
+long long OFF, SENS = 0; //used for pressure calculation
 //--------------Functions--------------------
 
+//cycle the i2c clock line high then low
 void i2c_clock_cycle(void){
     P4OUT |= SCL; //SCL HIGH
     for(j=0; j<I2C_DELAY; j++){}
     P4OUT &= ~SCL; //SCL LOW
 }
 
+//transmit a high bit on the i2c line
 void i2c_tx_high_bit(void){
     P4OUT |= SDA; //SDA HIGH
     //toggle clock
     i2c_clock_cycle();
 }
 
+//transit a low bit on the i2c line
 void i2c_tx_low_bit(void){
     P4OUT &= ~SDA; //SDA LOW
     //toggle clock
     i2c_clock_cycle();
 }
 
+//transmit the start condition on the i2c line, handling any starting position of the lines and setting the lines ready for the first bit
 void i2c_start(void){
     P4OUT |= SDA; //SDA HIGH
     for(j=0; j<I2C_DELAY; j++){}
@@ -62,6 +68,7 @@ void i2c_start(void){
     P4OUT &= ~SCL; //SCL LOW
 }
 
+//transmit the stop condition on the i2c line, handling the starting position of the lines and setting the lines to "idle"
 void i2c_stop(void){
     P4OUT &= ~SDA; //SDA LOW
     for(j=0; j<I2C_DELAY; j++){}
@@ -70,6 +77,7 @@ void i2c_stop(void){
     P4OUT |= SDA; //SDA HIGH
 }
 
+//transmit a nack condition on the i2c line
 void i2c_nack(void){
     P4OUT |= SDA; //SDA HIGH
     for(j=0; j<I2C_DELAY; j++){}
@@ -78,6 +86,7 @@ void i2c_nack(void){
     P4OUT &= ~SDA; //SDA LOW
 }
 
+//transmit an ack on the i2c line
 void i2c_ack(void){
     P4OUT &= ~SDA; //SDA LOW
     for(j=0; j<I2C_DELAY; j++){}
@@ -85,6 +94,7 @@ void i2c_ack(void){
     for(j=0; j<I2C_DELAY; j++){}
 }
 
+//read an ack from the slave and do something. Right now all we do is set a flag which is never cleared
 void i2c_read_ack(void){
     P4DIR &= ~SDA; // SDA input port
     for(j=0; j<I2C_DELAY*2; j++){}
@@ -97,6 +107,7 @@ void i2c_read_ack(void){
     for(j=0; j<I2C_DELAY; j++){}
 }
 
+//given any byte, transmit it on the i2c line
 void i2c_tx(char byte){
     for(i=8;i!=0;i--){
         if(byte & 0x80){
@@ -109,12 +120,14 @@ void i2c_tx(char byte){
     i2c_read_ack();
 }
 
+//given any address and read/write mode (using the #define values from above) we send the address with the right mode bit
 void i2c_tx_address(char addr, char mode){
     i2c_start();
     addr = (addr << 1) + mode;
     i2c_tx(addr);
 }
 
+//recieve the data from the slave device by setting the bit high or low in the data_in variable and shifting each bit recieved
 char i2c_rx(void){
     char data_in = 0x00;
     P4DIR &= ~SDA; // SDA input port
@@ -132,6 +145,7 @@ char i2c_rx(void){
     return data_in;
 }
 
+//function to read the temperature value given a sensor address and address of the register we are trying to read. Returns the value.
 char read_temp(char sensor, char addr){
     int data;
     i2c_tx_address(sensor, WRITE_MODE);
@@ -144,6 +158,8 @@ char read_temp(char sensor, char addr){
     return data;
 }
 
+//read accelerometer axis data and return the value read. Must call this three times to get each axis.
+//takes in the address of the axis register data (see define statements above)
 char read_accel(char addr){
     char data;
     i2c_tx_address(ACCEL_ADDR, WRITE_MODE);
@@ -157,12 +173,14 @@ char read_accel(char addr){
     return data;
 }
 
+//transmit to the pressure sensor, used inside the get pressure function
 void i2c_tx_pressure(char addr){
     i2c_tx_address(PRESSURE_ADDR, WRITE_MODE);
     i2c_tx(addr);
     i2c_stop();
 }
 
+//Get the pressure coefficients, these coefficients are only received once and saved and then used for pressure calculation
 void get_pressure_coeff(){
     for(k = 0; k < 8; k++){
         i2c_tx_pressure((0xA0+k*2));
@@ -176,6 +194,7 @@ void get_pressure_coeff(){
     }
 }
 
+//return the value read from the pressure sensor
 unsigned long i2c_rx_pressure(){
     unsigned long data;
     i2c_tx_address(PRESSURE_ADDR, READ_MODE);
@@ -192,6 +211,7 @@ unsigned long i2c_rx_pressure(){
     return data;
 }
 
+//calculate the value returned from the pressure sensor using the necessary equations to get the actual pressure value and pressure temp value
 void convert_pressure(){
     long temp_var;
     long long calc_pressure;
@@ -226,7 +246,6 @@ void convert_pressure(){
     calc_pressure = calc_pressure >> 15;
     pressure = calc_pressure;
     for(i=0; i < 10; i++){}
-
 }
 
 /**
@@ -242,6 +261,11 @@ int main(void)
 
     P4OUT |= SCL; //Set SCL high as default
     P4OUT |= SDA; //Set SDA high ad default
+
+    P6DIR |= BIT2; // LED Power-on
+
+    P6OUT &= ~BIT2; //set LED on when powered
+
 
     PM5CTL0 &= ~LOCKLPM5; // Turn on GPIO
 
@@ -279,7 +303,7 @@ int main(void)
 
     for(i=0; i<275; i++){} //3ms delay
 
-    //-----Get Pressure Coeffs---------
+    //get pressure coeffs
     get_pressure_coeff();
 
     for(i=0; i<254; i++){}
@@ -307,6 +331,7 @@ int main(void)
        accel_z = accel_z + read_accel(ACCEL_Z_LSB);
        for(i=0; i < 10; i++){}
 
+       //get pressure
        i2c_tx_pressure(GET_PRESSURE);
        for(i=0; i<900; i++){} //9ms delay
        i2c_tx_pressure(READ_PRESS);
@@ -319,7 +344,7 @@ int main(void)
 
        convert_pressure();
 
-       for(i=0; i<100; i++){}
+       for(i=0; i<100; i++){} //delay so data has time to update
     }
 
 	return 0;
