@@ -270,6 +270,13 @@ void convert_pressure(){
     for(i=0; i < 10; i++){}
 }
 
+void UART_tx_two_bytes(int val){
+    UCA0TXBUF = (val >> 8);
+    for(i=0; i<150;i++){}
+    UCA0TXBUF = (val & 0x00FF);
+    for(i=0; i<150;i++){}
+}
+
 //-----UART-----
 
 //Send UART config messages (takes a configuration message in the form of a character array"
@@ -381,17 +388,16 @@ int main(void)
     LORA_PAYLOAD.LORA_ext_temp = 0;
     LORA_PAYLOAD.LORA_int_temp = 0;
     LORA_PAYLOAD.LORA_pressure = 0;
-
     k = 0; //set k=0 to ensure manual incrementing of k for UART is setup correctly
     //fixes a bug where the array skips the first character, always a $
     GPS_GNGGA[0] = '$';
-    LORA_PAYLOAD.LORA_GPS[0] = '$';
+    //LORA_PAYLOAD.LORA_GPS[0] = '$';
 
     //DEBUG ONLY, DELETE THIS FOR LOOP WHEN READY TO GET REAL UART DATA
-    for(i=1; i<95; i++){
-        LORA_PAYLOAD.LORA_GPS[i] = '!';
-    }
-    LORA_PAYLOAD.LORA_GPS[95] = '\n';
+    //for(i=1; i<95; i++){
+        //LORA_PAYLOAD.LORA_GPS[i] = '!';
+    //}
+    //LORA_PAYLOAD.LORA_GPS[95] = '\n';
 
     //UCA0IE |= UCRXIE; //enable UART receive interrupt (do this here so we don't recieve data too early)
     //__enable_interrupt(); //uncomment when done developing LORA to get real UART DATA
@@ -441,26 +447,51 @@ int main(void)
 
        //set GPS data to struct value
           for(k = 0; k < 100; k++){
-              //LORA_PAYLOAD.LORA_GPS[k] = GPS_GNGGA[k]; //we set this rather than sending the GPS_GNGGA variable directly so we have a slight "debounce" from recieving it
+              LORA_PAYLOAD.LORA_GPS[k] = GPS_GNGGA[k]; //we set this rather than sending the GPS_GNGGA variable directly so we have a slight "debounce" from recieving it
               //UCA0TXBUF = LORA_PAYLOAD.LORA_GPS[k]; //uncomment this line to debug what is saving to the struct variable from the UART line
               if(GPS_GNGGA[k] == '\n'){
                   k = 0;
               }
-              for(i=0; i<150;i++){} //this line was a delay for UART transmission, you may be able to remove if using a different protocol (i.e. I2C, SPI)
+              for(i=0; i<150;i++){} //this line was a delay for UART transmission
           }
 
-       for(i=0; i<100; i++){} //delay so data has time to update, put a breakpoint on this line to get a refresh of the data every "play"
-
-
-
-       //---------------------------------------------------------------------------
-       //LARSON ADD LORA CODE HERE\/\/\/\/\/\/\/\/\/
-       //SEND ALL THE DATAAAAAAAAAAAA
-       // send(LORA_PAYLOAD); ?
-       //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-       //---------------------------------------------------------------------------
-
-
+              //Example of how to send the character array to LoRa! Yay!
+/*
+                  UCA1TXBUF = '[';
+                  for(i=0; i<150;i++){}
+                  UART_tx_two_bytes(LORA_PAYLOAD.LORA_int_temp);
+                  //UART_tx_comma();
+                  UART_tx_two_bytes(LORA_PAYLOAD.LORA_ext_temp);
+                  //UART_tx_comma();
+                  UART_tx_two_bytes(LORA_PAYLOAD.LORA_accel_x);
+                  //UART_tx_comma();
+                  UART_tx_two_bytes(LORA_PAYLOAD.LORA_accel_y);
+                  //UART_tx_comma();
+                  UART_tx_two_bytes(LORA_PAYLOAD.LORA_accel_z);
+                  //UART_tx_comma();
+                  UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure >> 24);
+                  for(i=0; i<150;i++){}
+                  UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure >> 16) & 0x00FF;
+                  for(i=0; i<150;i++){}
+                  UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure >> 8) & 0x00FF;
+                  for(i=0; i<150;i++){}
+                  UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure & 0x00FF);
+                  for(i=0; i<150;i++){}
+                  //UART_tx_comma();
+                  for(k = 0; k < 100; k++){
+                      UCA1TXBUF = LORA_PAYLOAD.LORA_GPS[k]; //uncomment this line to debug what is saving to the struct variable from the UART line
+                      //if(LORA_PAYLOAD.LORA_GPS[k] == '\n'){
+                          //k = 100;
+                      //}
+                      for(i=0; i<150;i++){}
+                  }
+                  UCA1TXBUF = ']';
+                  for(i=0; i<150;i++){}
+                  UCA1TXBUF = '\n';
+                  for(i=0; i<150;i++){}
+                  UCA1TXBUF = '\r';
+                  for(i=0; i<250;i++){} //delay so we aren't sending too often (can remove if other code delays enough already)
+*/
 
     }
     //return 0; //never reached, left here if needed in the future
