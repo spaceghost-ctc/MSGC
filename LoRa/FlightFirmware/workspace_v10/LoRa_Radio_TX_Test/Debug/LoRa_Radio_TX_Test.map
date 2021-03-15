@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v20.2.4                     
 ******************************************************************************
->> Linked Sun Mar 14 18:06:55 2021
+>> Linked Sun Mar 14 19:38:31 2021
 
 OUTPUT FILE NAME:   <LoRa_Radio_TX_Test.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 0000830e
+ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 0000838e
 
 
 MEMORY CONFIGURATION
@@ -16,8 +16,8 @@ MEMORY CONFIGURATION
   INFO                  00001800   00000200  00000000  00000200  RWIX
   TLVMEM                00001a00   00000200  00000000  00000200  RWIX
   BOOTCODE              00001c00   00000400  00000000  00000400  RWIX
-  RAM                   00002000   00001000  000001a2  00000e5e  RWIX
-  FRAM                  00008000   00007f80  00000336  00007c4a  RWIX
+  RAM                   00002000   00001000  000000b6  00000f4a  RWIX
+  FRAM                  00008000   00007f80  000003b6  00007bca  RWIX
   JTAGSIGNATURE         0000ff80   00000004  00000004  00000000  RWIX  ffff 
   BSLSIGNATURE          0000ff84   00000004  00000004  00000000  RWIX  ffff 
   BSLCONFIGURATIONSIGNA 0000ff88   00000002  00000002  00000000  RWIX  ffff 
@@ -106,25 +106,26 @@ section   page    origin      length       input sections
 
 .const     0    00008012    00000000     UNINITIALIZED
 
-.text      0    00008012    000002fc     
-                  00008012    000001d8     main.obj (.text:main)
-                  000081ea    0000006a     rts430x_lc_sd_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
-                  00008254    0000003e                            : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  00008292    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
-                  000082ce    00000022     main.obj (.text:SPI_tx)
-                  000082f0    00000012     main.obj (.text:delay)
-                  00008302    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
-                  00008308    00000004                            : pre_init.c.obj (.text:_system_pre_init)
-                  0000830c    00000002                            : startup.c.obj (.text:_system_post_cinit)
+.text      0    00008012    0000037c     
+                  00008012    0000020e     main.obj (.text:main)
+                  00008220    0000006a     rts430x_lc_sd_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
+                  0000828a    0000004a     main.obj (.text:SPI_burst_tx)
+                  000082d4    0000003e     rts430x_lc_sd_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00008312    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
+                  0000834e    00000022     main.obj (.text:SPI_tx)
+                  00008370    00000012     main.obj (.text:delay)
+                  00008382    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
+                  00008388    00000004                            : pre_init.c.obj (.text:_system_pre_init)
+                  0000838c    00000002                            : startup.c.obj (.text:_system_post_cinit)
 
 .text:_isr 
-*          0    0000830e    00000028     
-                  0000830e    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
-                  0000832e    00000008                            : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
+*          0    0000838e    00000028     
+                  0000838e    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
+                  000083ae    00000008                            : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
 
-.bss       0    00002000    00000102     UNINITIALIZED
-                  00002000    00000100     (.common:txpack)
-                  00002100    00000002     (.common:i)
+.bss       0    00002000    00000016     UNINITIALIZED
+                  00002000    00000014     (.common:txpack)
+                  00002014    00000002     (.common:i)
 
 .stack     0    00002f60    000000a0     UNINITIALIZED
                   00002f60    00000002     rts430x_lc_sd_eabi.lib : boot.c.obj (.stack)
@@ -236,9 +237,9 @@ MODULE SUMMARY
        Module                 code   ro data   rw data
        ------                 ----   -------   -------
     .\
-       main.obj               524    0         258    
+       main.obj               652    0         22     
     +--+----------------------+------+---------+---------+
-       Total:                 524    0         258    
+       Total:                 652    0         22     
                                                       
     C:\ti\ccs1020\ccs\ccs_base\msp430\lib\FR2xx\FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib
        frwp_init.obj          60     0         0      
@@ -283,13 +284,13 @@ MODULE SUMMARY
        Stack:                 0      0         160    
        Linker Generated:      0      18        0      
     +--+----------------------+------+---------+---------+
-       Grand Total:           804    68        418    
+       Grand Total:           932    68        182    
 
 
 LINKER GENERATED COPY TABLES
 
 __TI_cinit_table @ 0000800a records: 1, size/record: 8, table size: 8
-	.bss: load addr=00008000, load size=00000006 bytes, run addr=00002000, run size=00000102 bytes, compression=zero_init
+	.bss: load addr=00008000, load size=00000006 bytes, run addr=00002000, run size=00000016 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
@@ -380,7 +381,7 @@ address   name
 00000672  BAKMEM9                                
 00000673  BAKMEM9_H                              
 00000672  BAKMEM9_L                              
-00008302  C$$EXIT                                
+00008382  C$$EXIT                                
 000002ee  CAPTIOCTL                              
 000002ef  CAPTIOCTL_H                            
 000002ee  CAPTIOCTL_L                            
@@ -946,7 +947,8 @@ address   name
 00000104  SFRRPCR                                
 00000105  SFRRPCR_H                              
 00000104  SFRRPCR_L                              
-000082ce  SPI_tx                                 
+0000828a  SPI_burst_tx                           
+0000834e  SPI_tx                                 
 000004ce  SUMEXT                                 
 000004cf  SUMEXT_H                               
 000004ce  SUMEXT_L                               
@@ -1316,8 +1318,8 @@ address   name
 00008012  __TI_CINIT_Limit                       
 00008006  __TI_Handler_Table_Base                
 0000800a  __TI_Handler_Table_Limit               
-0000832e  __TI_ISR_TRAP                          
-000081ea  __TI_auto_init_nobinit_nopinit_hold_wdt
+000083ae  __TI_ISR_TRAP                          
+00008220  __TI_auto_init_nobinit_nopinit_hold_wdt
 0000ffce  __TI_int22                             
 0000ffd0  __TI_int23                             
 0000ffd2  __TI_int24                             
@@ -1345,20 +1347,20 @@ address   name
 ffffffff  __TI_pprof_out_hndl                    
 ffffffff  __TI_prof_data_size                    
 ffffffff  __TI_prof_data_start                   
-00008254  __TI_zero_init_nomemset                
+000082d4  __TI_zero_init_nomemset                
 ffffffff  __c_args__                             
 00000001  __mpu_enable                           
-00008292  __mpu_init                             
-0000830e  _c_int00_noargs_mpu                    
+00008312  __mpu_init                             
+0000838e  _c_int00_noargs_mpu                    
 0000fffe  _reset_vector                          
 00002f60  _stack                                 
-0000830c  _system_post_cinit                     
-00008308  _system_pre_init                       
-00008302  abort                                  
-000082f0  delay                                  
+0000838c  _system_post_cinit                     
+00008388  _system_pre_init                       
+00008382  abort                                  
+00008370  delay                                  
 00008000  fram_rw_start                          
 00008000  fram_rx_start                          
-00002100  i                                      
+00002014  i                                      
 00000001  info_fram_protection                   
 00008012  main                                   
 00000001  program_fram_protection                
@@ -2382,7 +2384,7 @@ address   name
 00000cba  SAC3IV_L                               
 00000cbb  SAC3IV_H                               
 00002000  txpack                                 
-00002100  i                                      
+00002014  i                                      
 00002f60  _stack                                 
 00003000  __STACK_END                            
 00008000  fram_rw_start                          
@@ -2392,17 +2394,18 @@ address   name
 0000800a  __TI_Handler_Table_Limit               
 00008012  __TI_CINIT_Limit                       
 00008012  main                                   
-000081ea  __TI_auto_init_nobinit_nopinit_hold_wdt
-00008254  __TI_zero_init_nomemset                
-00008292  __mpu_init                             
-000082ce  SPI_tx                                 
-000082f0  delay                                  
-00008302  C$$EXIT                                
-00008302  abort                                  
-00008308  _system_pre_init                       
-0000830c  _system_post_cinit                     
-0000830e  _c_int00_noargs_mpu                    
-0000832e  __TI_ISR_TRAP                          
+00008220  __TI_auto_init_nobinit_nopinit_hold_wdt
+0000828a  SPI_burst_tx                           
+000082d4  __TI_zero_init_nomemset                
+00008312  __mpu_init                             
+0000834e  SPI_tx                                 
+00008370  delay                                  
+00008382  C$$EXIT                                
+00008382  abort                                  
+00008388  _system_pre_init                       
+0000838c  _system_post_cinit                     
+0000838e  _c_int00_noargs_mpu                    
+000083ae  __TI_ISR_TRAP                          
 0000ffce  __TI_int22                             
 0000ffd0  __TI_int23                             
 0000ffd2  __TI_int24                             
@@ -2433,4 +2436,4 @@ ffffffff  __TI_prof_data_size
 ffffffff  __TI_prof_data_start                   
 ffffffff  __c_args__                             
 
-[1062 symbols]
+[1063 symbols]

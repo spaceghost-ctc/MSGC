@@ -10057,3 +10057,7 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ti.ccstud
 !ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 17:45:43.870
 !MESSAGE DS_ERROR: Error initializing emulator:
 No USB FET was found
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 18:56:48.922
+!MESSAGE DS_ERROR: MSP430: JTAG Communication Error 
+

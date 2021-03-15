@@ -11,14 +11,14 @@
 #include <msp430.h> 
 #include "reg_map.h"
 
-#define PAYLOAD_LEN 0x1F
+#define PAYLOAD_LEN 0x21
 
 //-----globals-----
 //char registerStats[26];
 char transmitted;
 unsigned int i;
 
-char txpack[256];
+char txpack[20];
 
 void delay(unsigned int j){
     unsigned int k;
@@ -35,6 +35,16 @@ void SPI_tx(char addr, char data){
     UCA1TXBUF = data;
     delay(20);
     P4OUT |= NSS;
+}
+
+void SPI_burst_tx(char data[20]){
+    for(i=0; i < PAYLOAD_LEN; i=i+2){
+        UCA1TXBUF = data[i];
+        delay(20);
+        UCA1TXBUF = data[i+1];
+        delay(20);
+    }
+    delay(PAYLOAD_LEN*10);
 }
 
 char SPI_read_reg(char addr){
@@ -86,8 +96,9 @@ int main(void)
 
     delay(10000);
 
-    for(i=0;i<256;i++){
-        txpack[i]=0xAA;
+    for(i=0;i<20;i=i+2){
+        txpack[i]=0x48;
+        txpack[i+1]=0x49;
     }
 
     //set the LoRa Settings for TX
@@ -140,9 +151,20 @@ int main(void)
             delay(20);
             UCA1TXBUF = 0x49;
             delay(20);
-            UCA1TXBUF = 0x00;
-            delay(150);
+            UCA1TXBUF = 0x48;
+            delay(20);
+            UCA1TXBUF = 0x49;
+            delay(20);
+            UCA1TXBUF = 0x48;
+            delay(20);
+            UCA1TXBUF = 0x49;
+            delay(20);
+            SPI_burst_tx(txpack);
+            UCA1TXBUF = 0x00; // we NEED this to end the transmission for RadioHead
+            delay(20);
             P4OUT |= NSS;
+
+
 
             SPI_tx(FIFO_ADDR_PTR_0D, 0x00); //Set Pointer to FIFO LoRa
 
