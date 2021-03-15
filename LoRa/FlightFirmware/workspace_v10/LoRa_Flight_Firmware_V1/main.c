@@ -357,8 +357,6 @@ int main(void)
 
     UCA1CTLW0 &= ~UCSWRST;      //  SPI operation Ready
 
-    P4OUT |= NSS;               //  Turn off Chip Select
-
     delay(1500);
 
     //set the LoRa Settings for TX
@@ -396,10 +394,14 @@ int main(void)
     P1SEL1 &= ~BIT7;
     P1SEL0 |= BIT7;
 
+    PM5CTL0 &= ~LOCKLPM5; // Turn on GPIO
+
+    P4OUT |= NSS;               //  Turn off Chip Select
+
     //for UART
     UCA0CTLW0 &= ~UCSWRST; //Take A0 out of software reset
 
-    PM5CTL0 &= ~LOCKLPM5; // Turn on GPIO
+
 
     //-------Reset Temp Sensor------------
 
@@ -440,17 +442,6 @@ int main(void)
 
     for(i=0; i<254; i++){}
 
-    //--------Send UART config messages--------
-    for(i=0; i<250; i++){}
-    for(k=0; k < 6; k++){
-        UART_config_GPS_msgs(diable_GLL);
-        UART_config_GPS_msgs(diable_GSV);
-        UART_config_GPS_msgs(diable_GSA);
-        UART_config_GPS_msgs(diable_VTG);
-        UART_config_GPS_msgs(diable_RMC);
-    }
-    for(i=0; i<250; i++){}
-
     //init all values to 0 so we don't accidentally send funky data
     LORA_PAYLOAD.LORA_accel_x = 0;
     LORA_PAYLOAD.LORA_accel_y = 0;
@@ -458,6 +449,15 @@ int main(void)
     LORA_PAYLOAD.LORA_ext_temp = 0;
     LORA_PAYLOAD.LORA_int_temp = 0;
     LORA_PAYLOAD.LORA_pressure = 0;
+
+    //--------Send UART config messages--------
+    for(k=0; k < 8; k++){
+        UART_config_GPS_msgs(diable_GLL);
+        UART_config_GPS_msgs(diable_GSV);
+        UART_config_GPS_msgs(diable_GSA);
+        UART_config_GPS_msgs(diable_VTG);
+        UART_config_GPS_msgs(diable_RMC);
+    }
     k = 0; //set k=0 to ensure manual incrementing of k for UART is setup correctly
     //fixes a bug where the array skips the first character, always a $
     GPS_GNGGA[0] = '$';
@@ -471,7 +471,8 @@ int main(void)
 
     UCA0IE |= UCRXIE; //enable UART receive interrupt (do this here so we don't recieve data too early)
     __enable_interrupt();
-    for(i=0; i<254; i++){}
+
+    delay(10000);
 
     while(1){
 
@@ -535,11 +536,11 @@ int main(void)
           delay(20);
           UCA1TXBUF = 0XFB;           // Header from
           delay(20);
-          UCA1TXBUF = 0x00;           // Header ID
+          UCA1TXBUF = 0x5B;           // Header ID
           delay(20);
-          UCA1TXBUF = 0x00;           // Header Key
+          UCA1TXBUF = 0x5B;           // Header Key
           delay(20);
-          UCA1TXBUF = '[';           // Start of transmission character
+          UCA1TXBUF = 0x5B;           // Start of transmission character
           delay(20);
 
           SPI_tx_two_bytes(LORA_PAYLOAD.LORA_int_temp);
@@ -571,8 +572,8 @@ int main(void)
               else if(k == 99){
                   UCA1TXBUF = ']';
                   delay(20);
-              }*/
-          }
+              }
+          }*/
           P4OUT |= NSS;
 
           SPI_tx(FIFO_ADDR_PTR_0D, 0x00); //Set Pointer to FIFO LoRa back to 0x00
@@ -580,7 +581,7 @@ int main(void)
           SPI_tx(OPMODE_01, MODE_LORA_TX); //Set to Transmit LoRa
 
           //long delay because we don't need to send that often and we wanna get the GPS data
-          for(i=0;i<50;i++){
+          for(i=0;i<10;i++){
             delay(10000);
           }
 
