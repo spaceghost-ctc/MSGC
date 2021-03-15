@@ -357,24 +357,9 @@ int main(void)
 
     UCA1CTLW0 &= ~UCSWRST;      //  SPI operation Ready
 
-    delay(1500);
+    P4OUT |= NSS;               //  Turn off Chip Select
 
-    //set the LoRa Settings for TX
-    SPI_tx(OPMODE_01, MODE_LORA_SLEEP); //Register Operation mode set to Sleep LoRa
-    delay(100); // delay to ensure we are in sleep  mode
-    SPI_tx(FIFO_TX_BASE_ADDR_0E, 0x00); //Set FIFO Tx Addr to 0x00
-    SPI_tx(FIFO_RX_BASE_ADDR_0F, 0x00);
-    SPI_tx(OPMODE_01, MODE_LORA_STBY); //Register Operation mode set to Standby LoRa
-    SPI_tx(FR_MSB_06, 0xE4); //Set to 912 MHz MSB
-    SPI_tx(FR_MID_07, 0x00); //Set to 912 MHz MidSB
-    SPI_tx(FR_LSB_08, 0x00); //Set to 912 MHz LSB
-    SPI_tx(POW_CONFIG_09, 0x8F); //Set Power Output
-    SPI_tx(PREAMBLE_LEN_MSB_20, 0x00); //Set Preamble MSB
-    SPI_tx(PREAMBLE_LEN_LSB_21, 0x08); //Set Preamble LSB
-    SPI_tx(MODEM_CONFIG_1_1D, 0x72); //Modem Config 1 | 7 = bandwidth, 2 = coding rate + explicit header
-    SPI_tx(MODEM_CONFIG_2_1E, 0xA4); //Modem Config 2 | A = Spreading factor, 0 = normal (single packet mode) + CRC enable (MUST BE ENABLED)
-    SPI_tx(MODEM_CONFIG_3_26, 0x00); //Modem Config 3 | Low Data Rate Optimize, LNA
-    SPI_tx(PAYLOAD_LEN_22, PAYLOAD_LEN); // Set Payload Len
+    delay(1500);
 
     //-------UART--------
     P6DIR |= BIT1; // LED Power-on
@@ -396,12 +381,29 @@ int main(void)
 
     PM5CTL0 &= ~LOCKLPM5; // Turn on GPIO
 
-    P4OUT |= NSS;               //  Turn off Chip Select
-
     //for UART
     UCA0CTLW0 &= ~UCSWRST; //Take A0 out of software reset
 
+    for(i=0;i<25;i++){
+      delay(10000);
+    }
 
+    //set the LoRa Settings for TX
+    SPI_tx(OPMODE_01, MODE_LORA_SLEEP); //Register Operation mode set to Sleep LoRa
+    delay(100); // delay to ensure we are in sleep  mode
+    SPI_tx(FIFO_TX_BASE_ADDR_0E, 0x00); //Set FIFO Tx Addr to 0x00
+    SPI_tx(FIFO_RX_BASE_ADDR_0F, 0x00);
+    SPI_tx(OPMODE_01, MODE_LORA_STBY); //Register Operation mode set to Standby LoRa
+    SPI_tx(FR_MSB_06, 0xE4); //Set to 912 MHz MSB
+    SPI_tx(FR_MID_07, 0x00); //Set to 912 MHz MidSB
+    SPI_tx(FR_LSB_08, 0x00); //Set to 912 MHz LSB
+    SPI_tx(POW_CONFIG_09, 0x8F); //Set Power Output
+    SPI_tx(PREAMBLE_LEN_MSB_20, 0x00); //Set Preamble MSB
+    SPI_tx(PREAMBLE_LEN_LSB_21, 0x08); //Set Preamble LSB
+    SPI_tx(MODEM_CONFIG_1_1D, 0x72); //Modem Config 1 | 7 = bandwidth, 2 = coding rate + explicit header
+    SPI_tx(MODEM_CONFIG_2_1E, 0xA4); //Modem Config 2 | A = Spreading factor, 0 = normal (single packet mode) + CRC enable (MUST BE ENABLED)
+    SPI_tx(MODEM_CONFIG_3_26, 0x00); //Modem Config 3 | Low Data Rate Optimize, LNA
+    SPI_tx(PAYLOAD_LEN_22, PAYLOAD_LEN); // Set Payload Len
 
     //-------Reset Temp Sensor------------
 
