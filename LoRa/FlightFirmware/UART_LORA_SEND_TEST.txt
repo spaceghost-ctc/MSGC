@@ -1,0 +1,34 @@
+UCA1TXBUF = '[';
+                  for(i=0; i<150;i++){}
+                  UART_tx_two_bytes(LORA_PAYLOAD.LORA_int_temp);
+                  //UART_tx_comma();
+                  UART_tx_two_bytes(LORA_PAYLOAD.LORA_ext_temp);
+                  //UART_tx_comma();
+                  UART_tx_two_bytes(LORA_PAYLOAD.LORA_accel_x);
+                  //UART_tx_comma();
+                  UART_tx_two_bytes(LORA_PAYLOAD.LORA_accel_y);
+                  //UART_tx_comma();
+                  UART_tx_two_bytes(LORA_PAYLOAD.LORA_accel_z);
+                  //UART_tx_comma();
+                  UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure >> 24);
+                  for(i=0; i<150;i++){}
+                  UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure >> 16) & 0x00FF;
+                  for(i=0; i<150;i++){}
+                  UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure >> 8) & 0x00FF;
+                  for(i=0; i<150;i++){}
+                  UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure & 0x00FF);
+                  for(i=0; i<150;i++){}
+                  //UART_tx_comma();
+                  for(k = 0; k < 100; k++){
+                      UCA1TXBUF = LORA_PAYLOAD.LORA_GPS[k]; //uncomment this line to debug what is saving to the struct variable from the UART line
+                      //if(LORA_PAYLOAD.LORA_GPS[k] == '\n'){
+                          //k = 100;
+                      //}
+                      for(i=0; i<150;i++){}
+                  }
+                  UCA1TXBUF = ']';
+                  for(i=0; i<150;i++){}
+                  UCA1TXBUF = '\n';
+                  for(i=0; i<150;i++){}
+                  UCA1TXBUF = '\r';
+                  for(i=0; i<250;i++){} //delay so we aren't sending too often (can remove if other code delays enough already)

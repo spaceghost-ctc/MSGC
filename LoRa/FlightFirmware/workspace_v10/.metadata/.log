@@ -10061,3 +10061,1008 @@ No USB FET was found
 !ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 18:56:48.922
 !MESSAGE DS_ERROR: MSP430: JTAG Communication Error 
 
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 20:11:52.040
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 20:11:52.341
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 20:30:18.016
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 20:30:18.319
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:12:30.783
+!MESSAGE DS_ERROR: MSP430: JTAG Communication Error 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:14:48.608
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:14:48.934
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:14:59.033
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:14:59.052
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:15:47.950
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:15:48.284
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:15:51.066
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:15:51.085
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:08.431
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:08.756
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:14.064
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:14.085
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:16.489
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:16.507
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:18.629
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:18.647
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:20.899
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:20.918
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:23.259
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 21:16:23.277
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2021-03-14 21:44:08.248
+!MESSAGE Request for monitor: '_Application_59_TI MSP430 USB1/MSP430_TI MSP430 USB1/MSP430_BreakpointManager_TI MSP430 USB1/MSP430_BreakpointManager_Breakpoint(2262)' resulted in an error.
+!SUBENTRY 1 com.ti.ccstudio.debug 4 10004 2021-03-14 21:44:08.248
+!MESSAGE Invalid error number
+!STACK 0
+com.ti.debug.engine.IBreakpointManager$BreakpointException: Invalid error number
+	at com.ti.debug.engine.impl.BreakpointManager.checkForException(BreakpointManager.java:60)
+	at com.ti.debug.engine.impl.BreakpointManager.enable(BreakpointManager.java:115)
+	at com.ti.ccstudio.debug.service.contexts.BreakpointManagerDMContext.dsEnabled(BreakpointManagerDMContext.java:720)
+	at com.ti.ccstudio.debug.service.contexts.BreakpointManagerDMContext.insertBreakpoint(BreakpointManagerDMContext.java:351)
+	at com.ti.ccstudio.debug.service.contexts.BreakpointManagerDMContext.insertBreakpoint(BreakpointManagerDMContext.java:315)
+	at com.ti.ccstudio.debug.service.BreakpointService.insertBreakpoint(BreakpointService.java:474)
+	at com.ti.ccstudio.debug.service.BreakpointService$8$1.handleCompleted(BreakpointService.java:597)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:317)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2021-03-14 21:47:59.603
+!MESSAGE Request for monitor: '_Application_60_TI MSP430 USB1/MSP430_TI MSP430 USB1/MSP430_BreakpointManager_TI MSP430 USB1/MSP430_BreakpointManager_Breakpoint(2320)' resulted in an error.
+!SUBENTRY 1 com.ti.ccstudio.debug 4 10004 2021-03-14 21:47:59.603
+!MESSAGE Invalid error number
+!STACK 0
+com.ti.debug.engine.IBreakpointManager$BreakpointException: Invalid error number
+	at com.ti.debug.engine.impl.BreakpointManager.checkForException(BreakpointManager.java:60)
+	at com.ti.debug.engine.impl.BreakpointManager.enable(BreakpointManager.java:115)
+	at com.ti.ccstudio.debug.service.contexts.BreakpointManagerDMContext.dsEnabled(BreakpointManagerDMContext.java:720)
+	at com.ti.ccstudio.debug.service.contexts.BreakpointManagerDMContext.insertBreakpoint(BreakpointManagerDMContext.java:351)
+	at com.ti.ccstudio.debug.service.contexts.BreakpointManagerDMContext.insertBreakpoint(BreakpointManagerDMContext.java:315)
+	at com.ti.ccstudio.debug.service.BreakpointService.insertBreakpoint(BreakpointService.java:474)
+	at com.ti.ccstudio.debug.service.BreakpointService$8$1.handleCompleted(BreakpointService.java:597)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:317)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:01:09.463
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:01:09.835
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:01:15.987
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:01:16.010
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:01:35.359
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Internal error
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:01:35.489
+!MESSAGE DS_ERROR: Error connecting to the target:
+Internal error
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:01:45.146
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:01:45.515
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:03:31.367
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:03:31.724
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:17:28.991
+!MESSAGE DS_ERROR: MSP430: Can't Run Target CPU: Could not run device (to breakpoint)
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:17:47.002
+!MESSAGE DS_ERROR: MSP430: Trouble Halting Target CPU: Internal error
+
+!SESSION 2021-03-14 22:19:13.020 -----------------------------------------------
+eclipse.buildId=4.14.0.I20191210-0610
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ti.ccstudio.branding.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2021-03-14 22:19:16.578
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.ti.common.core 1 0 2021-03-14 22:19:16.723
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 1 0 2021-03-14 22:19:16.729
+!MESSAGE debugServerDir=C:/ti/ccs1020/ccs/ccs_base/DebugServer
+
+!ENTRY com.ti.ccstudio.ui 1 0 2021-03-14 22:19:32.581
+!MESSAGE CCS IDE session started!
+	CCS build: 10.2.0.00009
+	CCS location: C:/ti/ccs1020/ccs
+	Workspace location: D:/GitHub/MSGC/LoRa/FlightFirmware/workspace_v10
+
+!ENTRY com.ti.ccstudio.project.ui.webcontent 1 0 2021-03-14 22:19:33.414
+!MESSAGE CCS HTTP adapter started! [ccs.port:64490] - Open 'http://localhost:64490/ide' in web browser to see listing of available APIs...
+
+!ENTRY com.ti.ccstudio.debug.server 4 214294189 2021-03-14 22:19:34.283
+!MESSAGE Unexpected CCS exit detected [3/14/21 1:38 PM]!!!
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-03-14 22:20:49.235
+!MESSAGE Indexed 'LoRa_GPS_Test' (1 sources, 6 headers) in 0.841 sec: 1,103 declarations; 1,756 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:22:55.273
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: Interface Communication error
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:22:55.587
+!MESSAGE DS_ERROR: Error initializing emulator:
+Interface Communication error
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:23:16.329
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: MSP-FET430UIF is already in use
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 22:23:16.656
+!MESSAGE DS_ERROR: Error initializing emulator:
+MSP-FET430UIF is already in use
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:09:09.200
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: A firmware update is required for the MSP430 Debug Interface (MSP-FET430UIF / MSP-FET / eZ-FET). Click the "Update" button to update the firmware and launch your debug session (this may require several update steps).  DO NOT UNPLUG THE INTERFACE DURING THE UPDATE.
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:09:09.498
+!MESSAGE DS_ERROR: Error initializing emulator:
+A firmware update is required for the MSP430 Debug Interface (MSP-FET430UIF / MSP-FET / eZ-FET). Click the "Update" button to update the firmware and launch your debug session (this may require several update steps).
+
+DO NOT UNPLUG THE INTERFACE DURING THE UPDATE.
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:09:34.475
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: A firmware update is required for the MSP430 Debug Interface (MSP-FET430UIF / MSP-FET / eZ-FET). Click the "Update" button to update the firmware and launch your debug session (this may require several update steps).  DO NOT UNPLUG THE INTERFACE DURING THE UPDATE.
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:09:34.852
+!MESSAGE DS_ERROR: Error initializing emulator:
+A firmware update is required for the MSP430 Debug Interface (MSP-FET430UIF / MSP-FET / eZ-FET). Click the "Update" button to update the firmware and launch your debug session (this may require several update steps).
+
+DO NOT UNPLUG THE INTERFACE DURING THE UPDATE.
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:10:39.367
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:10:39.715
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:12:11.842
+!MESSAGE DS_ERROR: MSP430: JTAG Communication Error 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:28:45.208
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:28:45.574
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:28:58.288
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:28:58.307
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:29:00.400
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:29:00.419
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:29:03.809
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:29:03.830
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:29:06.312
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:29:06.331
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:29:08.656
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:29:08.675
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:33:00.206
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:33:00.684
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:33:37.346
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:33:37.701
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:33:48.279
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:33:48.639
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:34:02.412
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:34:02.764
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:34:18.202
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:34:18.561
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:35:54.777
+!MESSAGE DS_ERROR: MSP430: Breakpoint Manager: Invalid parameter(s)
+
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2021-03-14 23:36:28.509
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@2741fdf0): Status ERROR: org.eclipse.cdt.dsf code=10005 Composite status null children=[Status ERROR: org.eclipse.cdt.dsf code=0 Executor shut down while executing Sequence Sequence "", result for executing step #11 = Status ERROR: org.eclipse.cdt.dsf code=10005 Request for monitor: 'RequestMonitor (com.ti.ccstudio.debug.launch.ServicesShutdownSequence$3@747f3cce): Status OK: unknown code=0 OK null' resulted in a rejected execution exception. null, step #11 null Status ERROR: org.eclipse.cdt.dsf code=10005 Request for monitor: 'RequestMonitor (com.ti.ccstudio.debug.launch.CCSLaunch$3@2ad52d28): Status ERROR: org.eclipse.cdt.dsf code=0 Executor shut down while executing Sequence Sequence "", result for executing step #11 = Status ERROR: org.eclipse.cdt.dsf code=10005 Request for monitor: 'RequestMonitor (com.ti.ccstudio.debug.launch.ServicesShutdownSequence$3@747f3cce): Status OK: unknown code=0 OK null' resulted in a rejected execution exception. null, step #11 null' resulted in a rejected execution exception. null]' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 0 2021-03-14 23:36:28.509
+!MESSAGE Executor shut down while executing Sequence Sequence "", result for executing step #11 = Status ERROR: org.eclipse.cdt.dsf code=10005 Request for monitor: 'RequestMonitor (com.ti.ccstudio.debug.launch.ServicesShutdownSequence$3@747f3cce): Status OK: unknown code=0 OK null' resulted in a rejected execution exception. null, step #11
+!SUBENTRY 1 org.eclipse.cdt.dsf 4 10005 2021-03-14 23:36:28.509
+!MESSAGE Request for monitor: 'RequestMonitor (com.ti.ccstudio.debug.launch.CCSLaunch$3@2ad52d28): Status ERROR: org.eclipse.cdt.dsf code=0 Executor shut down while executing Sequence Sequence "", result for executing step #11 = Status ERROR: org.eclipse.cdt.dsf code=10005 Request for monitor: 'RequestMonitor (com.ti.ccstudio.debug.launch.ServicesShutdownSequence$3@747f3cce): Status OK: unknown code=0 OK null' resulted in a rejected execution exception. null, step #11 null' resulted in a rejected execution exception.
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:36:29.726
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: No USB FET was found
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:36:30.156
+!MESSAGE DS_ERROR: Error initializing emulator:
+No USB FET was found
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:41:18.805
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:41:19.160
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-03-14 23:45:19.896
+!MESSAGE Indexed 'LoRa_GPS_Only_Test' (1 sources, 6 headers) in 0.228 sec: 1,103 declarations; 1,756 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:37.366
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:37.751
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:44.728
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Internal error
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:44.859
+!MESSAGE DS_ERROR: Error connecting to the target:
+Internal error
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:45.763
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Internal error
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:45.900
+!MESSAGE DS_ERROR: Error connecting to the target:
+Internal error
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:46.888
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Internal error
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:47.017
+!MESSAGE DS_ERROR: Error connecting to the target:
+Internal error
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:51.145
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Internal error
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:51.273
+!MESSAGE DS_ERROR: Error connecting to the target:
+Internal error
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:51.993
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Internal error
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:45:52.117
+!MESSAGE DS_ERROR: Error connecting to the target:
+Internal error
+
+!ENTRY org.eclipse.ui.workbench.texteditor 4 0 2021-03-14 23:55:03.758
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.texteditor.AbstractTextEditor$TextEditorSavable.isDirty(AbstractTextEditor.java:7196)
+	at org.eclipse.ui.internal.Workbench.getFilteredSaveables(Workbench.java:3511)
+	at org.eclipse.ui.internal.Workbench.saveAll(Workbench.java:3484)
+	at org.eclipse.ui.ide.IDE$1.run(IDE.java:1495)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.ide.IDE.saveAllEditors(IDE.java:1483)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.doSave(SaveScopeResourcesHandler.java:228)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.handleStatus(SaveScopeResourcesHandler.java:182)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.lambda$0(Prompter.java:73)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:171)
+	at org.eclipse.ui.internal.UISynchronizer.lambda$0(UISynchronizer.java:152)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3963)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3590)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:660)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:559)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+
+!ENTRY org.eclipse.ui.workbench.texteditor 4 0 2021-03-14 23:59:21.888
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.texteditor.AbstractTextEditor$TextEditorSavable.isDirty(AbstractTextEditor.java:7196)
+	at org.eclipse.ui.internal.Workbench.getFilteredSaveables(Workbench.java:3511)
+	at org.eclipse.ui.internal.Workbench.saveAll(Workbench.java:3484)
+	at org.eclipse.ui.ide.IDE$1.run(IDE.java:1495)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.ide.IDE.saveAllEditors(IDE.java:1483)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.doSave(SaveScopeResourcesHandler.java:228)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.handleStatus(SaveScopeResourcesHandler.java:182)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.lambda$0(Prompter.java:73)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:171)
+	at org.eclipse.ui.internal.UISynchronizer.lambda$0(UISynchronizer.java:152)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3963)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3590)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:660)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:559)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:59:26.186
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:59:26.568
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:59:39.961
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:59:40.327
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:59:54.801
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-14 23:59:55.163
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:00:32.408
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:00:32.776
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:00:50.150
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:00:50.512
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:01:02.140
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:01:02.523
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY org.eclipse.ui.workbench.texteditor 4 0 2021-03-15 00:03:54.649
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.texteditor.AbstractTextEditor$TextEditorSavable.isDirty(AbstractTextEditor.java:7196)
+	at org.eclipse.ui.internal.Workbench.getFilteredSaveables(Workbench.java:3511)
+	at org.eclipse.ui.internal.Workbench.saveAll(Workbench.java:3484)
+	at org.eclipse.ui.ide.IDE$1.run(IDE.java:1495)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.ide.IDE.saveAllEditors(IDE.java:1483)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.doSave(SaveScopeResourcesHandler.java:228)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.handleStatus(SaveScopeResourcesHandler.java:182)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.lambda$0(Prompter.java:73)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:171)
+	at org.eclipse.ui.internal.UISynchronizer.lambda$0(UISynchronizer.java:152)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3963)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3590)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:660)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:559)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:03:59.068
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:03:59.424
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2021-03-15 00:06:52.582
+!MESSAGE Request for monitor: '_Application_41_TI MSP430 USB1/MSP430_TI MSP430 USB1/MSP430_BreakpointManager_TI MSP430 USB1/MSP430_BreakpointManager_Breakpoint(1071)' resulted in an error.
+!SUBENTRY 1 com.ti.ccstudio.debug 4 10004 2021-03-15 00:06:52.582
+!MESSAGE Invalid error number
+!STACK 0
+com.ti.debug.engine.IBreakpointManager$BreakpointException: Invalid error number
+	at com.ti.debug.engine.impl.BreakpointManager.checkForException(BreakpointManager.java:60)
+	at com.ti.debug.engine.impl.BreakpointManager.enable(BreakpointManager.java:115)
+	at com.ti.ccstudio.debug.service.contexts.BreakpointManagerDMContext.dsEnabled(BreakpointManagerDMContext.java:720)
+	at com.ti.ccstudio.debug.service.contexts.BreakpointManagerDMContext.insertBreakpoint(BreakpointManagerDMContext.java:351)
+	at com.ti.ccstudio.debug.service.contexts.BreakpointManagerDMContext.insertBreakpoint(BreakpointManagerDMContext.java:315)
+	at com.ti.ccstudio.debug.service.BreakpointService.insertBreakpoint(BreakpointService.java:474)
+	at com.ti.ccstudio.debug.service.BreakpointService$8$1.handleCompleted(BreakpointService.java:597)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:317)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.ui.workbench.texteditor 4 0 2021-03-15 00:07:04.743
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.texteditor.AbstractTextEditor$TextEditorSavable.isDirty(AbstractTextEditor.java:7196)
+	at org.eclipse.ui.internal.Workbench.getFilteredSaveables(Workbench.java:3511)
+	at org.eclipse.ui.internal.Workbench.saveAll(Workbench.java:3484)
+	at org.eclipse.ui.ide.IDE$1.run(IDE.java:1495)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.ide.IDE.saveAllEditors(IDE.java:1483)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.doSave(SaveScopeResourcesHandler.java:228)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.handleStatus(SaveScopeResourcesHandler.java:182)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.lambda$0(Prompter.java:73)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:171)
+	at org.eclipse.ui.internal.UISynchronizer.lambda$0(UISynchronizer.java:152)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3963)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3590)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:660)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:559)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+
+!ENTRY org.eclipse.ui.workbench.texteditor 4 0 2021-03-15 00:13:17.835
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.texteditor.AbstractTextEditor$TextEditorSavable.isDirty(AbstractTextEditor.java:7196)
+	at org.eclipse.ui.internal.Workbench.getFilteredSaveables(Workbench.java:3511)
+	at org.eclipse.ui.internal.Workbench.saveAll(Workbench.java:3484)
+	at org.eclipse.ui.ide.IDE$1.run(IDE.java:1495)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.ide.IDE.saveAllEditors(IDE.java:1483)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.doSave(SaveScopeResourcesHandler.java:228)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.handleStatus(SaveScopeResourcesHandler.java:182)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.lambda$0(Prompter.java:73)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:171)
+	at org.eclipse.ui.internal.UISynchronizer.lambda$0(UISynchronizer.java:152)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3963)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3590)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:660)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:559)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+
+!ENTRY org.eclipse.ui.workbench.texteditor 4 0 2021-03-15 00:15:35.508
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.texteditor.AbstractTextEditor$TextEditorSavable.isDirty(AbstractTextEditor.java:7196)
+	at org.eclipse.ui.internal.Workbench.getFilteredSaveables(Workbench.java:3511)
+	at org.eclipse.ui.internal.Workbench.saveAll(Workbench.java:3484)
+	at org.eclipse.ui.ide.IDE$1.run(IDE.java:1495)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.ide.IDE.saveAllEditors(IDE.java:1483)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.doSave(SaveScopeResourcesHandler.java:228)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.handleStatus(SaveScopeResourcesHandler.java:182)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.lambda$0(Prompter.java:73)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:171)
+	at org.eclipse.ui.internal.UISynchronizer.lambda$0(UISynchronizer.java:152)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3963)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3590)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:660)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:559)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+
+!ENTRY org.eclipse.ui.workbench.texteditor 4 0 2021-03-15 00:22:25.698
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.texteditor.AbstractTextEditor$TextEditorSavable.isDirty(AbstractTextEditor.java:7196)
+	at org.eclipse.ui.internal.Workbench.getFilteredSaveables(Workbench.java:3511)
+	at org.eclipse.ui.internal.Workbench.saveAll(Workbench.java:3484)
+	at org.eclipse.ui.ide.IDE$1.run(IDE.java:1495)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.ide.IDE.saveAllEditors(IDE.java:1483)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.doSave(SaveScopeResourcesHandler.java:228)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.handleStatus(SaveScopeResourcesHandler.java:182)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.lambda$0(Prompter.java:73)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:171)
+	at org.eclipse.ui.internal.UISynchronizer.lambda$0(UISynchronizer.java:152)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3963)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3590)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:660)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:559)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+
+!ENTRY org.eclipse.ui.workbench.texteditor 4 0 2021-03-15 00:25:41.215
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.texteditor.AbstractTextEditor$TextEditorSavable.isDirty(AbstractTextEditor.java:7196)
+	at org.eclipse.ui.internal.Workbench.getFilteredSaveables(Workbench.java:3511)
+	at org.eclipse.ui.internal.Workbench.saveAll(Workbench.java:3484)
+	at org.eclipse.ui.ide.IDE$1.run(IDE.java:1495)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.ide.IDE.saveAllEditors(IDE.java:1483)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.doSave(SaveScopeResourcesHandler.java:228)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.handleStatus(SaveScopeResourcesHandler.java:182)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.lambda$0(Prompter.java:73)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:171)
+	at org.eclipse.ui.internal.UISynchronizer.lambda$0(UISynchronizer.java:152)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3963)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3590)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:660)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:559)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:25:45.166
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:25:45.516
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:25:58.779
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:25:59.135
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:26:10.962
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:26:11.303
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:26:22.387
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:26:22.731
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:30:54.819
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:30:55.161
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:33:15.636
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:33:15.981
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY org.eclipse.ui.workbench.texteditor 4 0 2021-03-15 00:48:33.793
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.ui.texteditor.AbstractTextEditor$TextEditorSavable.isDirty(AbstractTextEditor.java:7196)
+	at org.eclipse.ui.internal.Workbench.getFilteredSaveables(Workbench.java:3511)
+	at org.eclipse.ui.internal.Workbench.saveAll(Workbench.java:3484)
+	at org.eclipse.ui.ide.IDE$1.run(IDE.java:1495)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.ide.IDE.saveAllEditors(IDE.java:1483)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.doSave(SaveScopeResourcesHandler.java:228)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.handleStatus(SaveScopeResourcesHandler.java:182)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.lambda$0(Prompter.java:73)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:171)
+	at org.eclipse.ui.internal.UISynchronizer.lambda$0(UISynchronizer.java:152)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3963)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3590)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:660)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:559)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:48:38.180
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:48:38.531
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:48:48.534
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:48:48.875
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:49:10.279
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:49:10.626
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:49:23.654
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:49:24.004
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:49:40.180
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:49:40.520
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:49:52.168
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:49:52.525
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:49:55.252
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:49:55.271
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:56:03.899
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 00:56:04.238
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
