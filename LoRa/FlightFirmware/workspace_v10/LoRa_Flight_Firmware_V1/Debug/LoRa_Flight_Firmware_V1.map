@@ -1,7 +1,7 @@
 ******************************************************************************
                   MSP430 Linker PC v20.2.2                     
 ******************************************************************************
->> Linked Mon Mar 15 12:52:44 2021
+>> Linked Mon Mar 15 16:36:47 2021
 
 OUTPUT FILE NAME:   <LoRa_Flight_Firmware_V1.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 0000916c
@@ -16,7 +16,7 @@ MEMORY CONFIGURATION
   INFO                  00001800   00000200  00000000  00000200  RWIX
   TLVMEM                00001a00   00000200  00000000  00000200  RWIX
   BOOTCODE              00001c00   00000400  00000000  00000400  RWIX
-  RAM                   00002000   00001000  00000251  00000daf  RWIX
+  RAM                   00002000   00001000  000001ed  00000e13  RWIX
   FRAM                  00008000   00007f80  00001194  00006dec  RWIX
   JTAGSIGNATURE         0000ff80   00000004  00000004  00000000  RWIX  ffff 
   BSLSIGNATURE          0000ff84   00000004  00000004  00000000  RWIX  ffff 
@@ -79,6 +79,19 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
+.data      0    00002000    000000aa     UNINITIALIZED
+                  00002000    0000001d     main.obj (.data:diable_GLL)
+                  0000201d    00000001     --HOLE--
+                  0000201e    0000001d     main.obj (.data:diable_GSA)
+                  0000203b    00000001     --HOLE--
+                  0000203c    0000001d     main.obj (.data:diable_GSV)
+                  00002059    00000001     --HOLE--
+                  0000205a    0000001d     main.obj (.data:diable_RMC)
+                  00002077    00000001     --HOLE--
+                  00002078    0000001d     main.obj (.data:diable_VTG)
+                  00002095    00000001     --HOLE--
+                  00002096    00000014     main.obj (.data)
+
 .TI.persistent 
 *          0    00008000    00000000     UNINITIALIZED
 
@@ -154,36 +167,22 @@ section   page    origin      length       input sections
                   0000916c    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
                   0000918c    00000008                            : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
 
-.bss       0    00002000    00000107     UNINITIALIZED
-                  00002000    00000064     (.common:GPS_GNGGA)
-                  00002064    00000064     (.common:temp)
-                  000020c8    00000010     (.common:c)
-                  000020d8    0000000e     (.common:LORA_PAYLOAD)
-                  000020e6    00000008     (.common:OFF)
-                  000020ee    00000004     (.common:dT)
-                  000020f2    00000004     (.common:digital_press)
-                  000020f6    00000004     (.common:press_temp)
-                  000020fa    00000002     (.common:accel_x)
-                  000020fc    00000002     (.common:accel_y)
-                  000020fe    00000002     (.common:ext_temp)
-                  00002100    00000002     (.common:i)
-                  00002102    00000002     (.common:int_temp)
-                  00002104    00000001     (.common:h)
-                  00002105    00000001     (.common:j)
-                  00002106    00000001     (.common:k)
-
-.data      0    00002108    000000aa     UNINITIALIZED
-                  00002108    0000001d     main.obj (.data:diable_GLL)
-                  00002125    00000001     --HOLE--
-                  00002126    0000001d     main.obj (.data:diable_GSA)
-                  00002143    00000001     --HOLE--
-                  00002144    0000001d     main.obj (.data:diable_GSV)
-                  00002161    00000001     --HOLE--
-                  00002162    0000001d     main.obj (.data:diable_RMC)
-                  0000217f    00000001     --HOLE--
-                  00002180    0000001d     main.obj (.data:diable_VTG)
-                  0000219d    00000001     --HOLE--
-                  0000219e    00000014     main.obj (.data)
+.bss       0    000020aa    000000a3     UNINITIALIZED
+                  000020aa    00000064     (.common:GPS_GNGGA)
+                  0000210e    00000010     (.common:c)
+                  0000211e    0000000e     (.common:LORA_PAYLOAD)
+                  0000212c    00000008     (.common:OFF)
+                  00002134    00000004     (.common:dT)
+                  00002138    00000004     (.common:digital_press)
+                  0000213c    00000004     (.common:press_temp)
+                  00002140    00000002     (.common:accel_x)
+                  00002142    00000002     (.common:accel_y)
+                  00002144    00000002     (.common:ext_temp)
+                  00002146    00000002     (.common:i)
+                  00002148    00000002     (.common:int_temp)
+                  0000214a    00000001     (.common:h)
+                  0000214b    00000001     (.common:j)
+                  0000214c    00000001     (.common:k)
 
 .stack     0    00002f60    000000a0     UNINITIALIZED
                   00002f60    00000002     rts430x_lc_sd_eabi.lib : boot.c.obj (.stack)
@@ -295,9 +294,9 @@ MODULE SUMMARY
        Module                       code   ro data   rw data
        ------                       ----   -------   -------
     .\
-       main.obj                     3322   2         428    
+       main.obj                     3322   2         328    
     +--+----------------------------+------+---------+---------+
-       Total:                       3322   2         428    
+       Total:                       3322   2         328    
                                                             
     C:\ti\ccs1020\ccs\ccs_base\msp430\lib\FR2xx\FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib
        frwp_init.obj                60     0         0      
@@ -351,14 +350,14 @@ MODULE SUMMARY
        Stack:                       0      0         160    
        Linker Generated:            0      99        0      
     +--+----------------------------+------+---------+---------+
-       Grand Total:                 4400   149       588    
+       Grand Total:                 4400   149       488    
 
 
 LINKER GENERATED COPY TABLES
 
 __TI_cinit_table @ 00008054 records: 2, size/record: 8, table size: 16
-	.data: load addr=00008000, load size=00000041 bytes, run addr=00002108, run size=000000aa bytes, compression=lzss
-	.bss: load addr=0000804e, load size=00000006 bytes, run addr=00002000, run size=00000107 bytes, compression=zero_init
+	.data: load addr=00008000, load size=00000041 bytes, run addr=00002000, run size=000000aa bytes, compression=lzss
+	.bss: load addr=0000804e, load size=00000006 bytes, run addr=000020aa, run size=000000a3 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
@@ -540,7 +539,7 @@ address   name
 000001a6  GCCTL1                                 
 000001a7  GCCTL1_H                               
 000001a6  GCCTL1_L                               
-00002000  GPS_GNGGA                              
+000020aa  GPS_GNGGA                              
 000006c4  ICCILSR0                               
 000006c5  ICCILSR0_H                             
 000006c4  ICCILSR0_L                             
@@ -559,7 +558,7 @@ address   name
 000006c0  ICCSC                                  
 000006c1  ICCSC_H                                
 000006c0  ICCSC_L                                
-000020d8  LORA_PAYLOAD                           
+0000211e  LORA_PAYLOAD                           
 000004c4  MAC                                    
 000004da  MAC32H                                 
 000004db  MAC32H_H                               
@@ -599,7 +598,7 @@ address   name
 000004c2  MPYS_L                                 
 000004c1  MPY_H                                  
 000004c0  MPY_L                                  
-000020e6  OFF                                    
+0000212c  OFF                                    
 000004c8  OP2                                    
 000004e2  OP2H                                   
 000004e3  OP2H_H                                 
@@ -1012,7 +1011,7 @@ address   name
 00000cb2  SAC3PGA                                
 00000cb3  SAC3PGA_H                              
 00000cb2  SAC3PGA_L                              
-000021aa  SENS                                   
+000020a2  SENS                                   
 00000100  SFRIE1                                 
 00000101  SFRIE1_H                               
 00000100  SFRIE1_L                               
@@ -1485,26 +1484,26 @@ ffffffff  __c_args__
 0000913e  _system_post_cinit                     
 0000913a  _system_pre_init                       
 00009134  abort                                  
-000020fa  accel_x                                
-000020fc  accel_y                                
-000021a0  accel_z                                
-000020c8  c                                      
+00002140  accel_x                                
+00002142  accel_y                                
+00002098  accel_z                                
+0000210e  c                                      
 000085c6  convert_pressure                       
-000020ee  dT                                     
+00002134  dT                                     
 000090ba  delay                                  
-00002108  diable_GLL                             
-00002126  diable_GSA                             
-00002144  diable_GSV                             
-00002162  diable_RMC                             
-00002180  diable_VTG                             
-000020f2  digital_press                          
-000021a2  digital_press_temp                     
-000020fe  ext_temp                               
+00002000  diable_GLL                             
+0000201e  diable_GSA                             
+0000203c  diable_GSV                             
+0000205a  diable_RMC                             
+00002078  diable_VTG                             
+00002138  digital_press                          
+0000209a  digital_press_temp                     
+00002144  ext_temp                               
 00008000  fram_rw_start                          
 00008000  fram_rx_start                          
 00008944  get_pressure_coeff                     
-00002104  h                                      
-00002100  i                                      
+0000214a  h                                      
+00002146  i                                      
 00008eee  i2c_ack                                
 00009046  i2c_clock_cycle                        
 00008cbc  i2c_nack                               
@@ -1512,7 +1511,7 @@ ffffffff  __c_args__
 000089c0  i2c_rx                                 
 00008a32  i2c_rx_pressure                        
 00008b74  i2c_start                              
-0000219e  i2c_status                             
+00002096  i2c_status                             
 00008c78  i2c_stop                               
 00008fd6  i2c_tx                                 
 000090dc  i2c_tx_address                         
@@ -1520,17 +1519,16 @@ ffffffff  __c_args__
 00009128  i2c_tx_low_bit                         
 000090fe  i2c_tx_pressure                        
 00000001  info_fram_protection                   
-00002102  int_temp                               
-00002105  j                                      
-00002106  k                                      
+00002148  int_temp                               
+0000214b  j                                      
+0000214c  k                                      
 00008064  main                                   
-000020f6  press_temp                             
-000021a6  pressure                               
+0000213c  press_temp                             
+0000209e  pressure                               
 00000001  program_fram_protection                
 0000900e  read_accel                             
 00008f64  read_temp                              
 00000000  start_protection_offset_address        
-00002064  temp                                   
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -2548,32 +2546,31 @@ address   name
 00000cba  SAC3IV                                 
 00000cba  SAC3IV_L                               
 00000cbb  SAC3IV_H                               
-00002000  GPS_GNGGA                              
-00002064  temp                                   
-000020c8  c                                      
-000020d8  LORA_PAYLOAD                           
-000020e6  OFF                                    
-000020ee  dT                                     
-000020f2  digital_press                          
-000020f6  press_temp                             
-000020fa  accel_x                                
-000020fc  accel_y                                
-000020fe  ext_temp                               
-00002100  i                                      
-00002102  int_temp                               
-00002104  h                                      
-00002105  j                                      
-00002106  k                                      
-00002108  diable_GLL                             
-00002126  diable_GSA                             
-00002144  diable_GSV                             
-00002162  diable_RMC                             
-00002180  diable_VTG                             
-0000219e  i2c_status                             
-000021a0  accel_z                                
-000021a2  digital_press_temp                     
-000021a6  pressure                               
-000021aa  SENS                                   
+00002000  diable_GLL                             
+0000201e  diable_GSA                             
+0000203c  diable_GSV                             
+0000205a  diable_RMC                             
+00002078  diable_VTG                             
+00002096  i2c_status                             
+00002098  accel_z                                
+0000209a  digital_press_temp                     
+0000209e  pressure                               
+000020a2  SENS                                   
+000020aa  GPS_GNGGA                              
+0000210e  c                                      
+0000211e  LORA_PAYLOAD                           
+0000212c  OFF                                    
+00002134  dT                                     
+00002138  digital_press                          
+0000213c  press_temp                             
+00002140  accel_x                                
+00002142  accel_y                                
+00002144  ext_temp                               
+00002146  i                                      
+00002148  int_temp                               
+0000214a  h                                      
+0000214b  j                                      
+0000214c  k                                      
 00002f60  _stack                                 
 00003000  __STACK_END                            
 00008000  fram_rw_start                          
@@ -2696,4 +2693,4 @@ ffffffff  __TI_prof_data_size
 ffffffff  __TI_prof_data_start                   
 ffffffff  __c_args__                             
 
-[1158 symbols]
+[1157 symbols]

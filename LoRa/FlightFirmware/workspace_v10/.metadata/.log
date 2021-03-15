@@ -12426,3 +12426,39 @@ No USB FET was found
 !ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 12:55:31.821
 !MESSAGE DS_ERROR: Error connecting to the target:
 Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 16:36:51.802
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 16:36:52.094
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 16:37:12.955
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 16:37:13.220
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 16:37:32.499
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 16:37:32.760
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 16:37:39.418
+!MESSAGE DS_ERROR: MSP430: Error connecting to the target: Unknown device
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 16:37:39.680
+!MESSAGE DS_ERROR: Error connecting to the target:
+Unknown device
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-15 16:40:42.291
+!MESSAGE DS_ERROR: MSP430: JTAG Communication Error 
+

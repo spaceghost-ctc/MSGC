@@ -15,6 +15,7 @@ struct payload{
     int LORA_accel_x;
     int LORA_accel_y;
     int LORA_accel_z;
+    //char LORA_GPS[100]; //uncomment if using this in the debounce loop
 };
 
 //--------------Globals--------------------
@@ -27,7 +28,6 @@ unsigned int c[8]; //coefficients for the pressure sensor
 unsigned long digital_press, digital_press_temp = 0; //these are the variables that are used in calculating the pressure, not the actual pressure values
 long dT, press_temp, pressure = 0; //actual temperature from pressure sensor and pressure
 long long OFF, SENS = 0; //used for pressure calculation
-char temp[100];
 
 //-----GPS Globals-----
 // The below character arrays are the strings needing to be sent to the GPS to properly configure the messages
@@ -39,7 +39,7 @@ char diable_RMC[] = {'$','P','U','B','X',',','4','0',',','R','M','C',',','0',','
 char GPS_GNGGA[100]; //this holds the char array we want
 
 //----LORA STRUCT----
-struct payload LORA_PAYLOAD; //THIS IS THE LORA PAYLOAD ALL MEMBERS ARE DAYA TO BE SENT TO THE LORA
+struct payload LORA_PAYLOAD; //THIS IS THE LORA PAYLOAD ALL MEMBERS ARE DAYA TO BE SENT TO THE LORA, GLOBAL FOR INTERRUPT ACCESS
 
 //--------------Functions--------------------
 
@@ -59,19 +59,20 @@ void SPI_tx(char addr, char data){
     P4OUT &= ~NSS;
     UCA1TXBUF = temp;
     UCA1TXBUF = data;
-    delay(20);
+    delay(SPI_DELAY);
     P4OUT |= NSS;
 }
 
-void SPI_burst_tx(char data[20]){
+//currently unused
+/*void SPI_burst_tx(char data[20]){
     for(i=0; i < PAYLOAD_LEN; i=i+2){
         UCA1TXBUF = data[i];
-        delay(20);
+        delay(SPI_DELAY);
         UCA1TXBUF = data[i+1];
-        delay(20);
+        delay(SPI_DELAY);
     }
-    delay(PAYLOAD_LEN*10);
-}
+    delay(PAYLOAD_LEN*SPI_DELAY);
+}*/
 
 char SPI_read_reg(char addr){
     char data;
@@ -79,16 +80,16 @@ char SPI_read_reg(char addr){
     UCA1TXBUF = addr;
     UCA1TXBUF = addr;
     data = UCA1RXBUF;
-    delay(20);
+    delay(SPI_DELAY);
     P4OUT |= NSS;
     return data;
 }
 
 void SPI_tx_two_bytes(int val){
     UCA1TXBUF = (val >> 8);
-    delay(20);
+    delay(SPI_DELAY);
     UCA1TXBUF = (val & 0x00FF);
-    delay(20);
+    delay(SPI_DELAY);
 }
 
 //-----I2C-----
@@ -305,8 +306,6 @@ void convert_pressure(){
     for(i=0; i < 10; i++){}
 }
 
-
-
 //-----UART-----
 
 //Send UART config messages (takes a configuration message in the form of a character array"
@@ -463,15 +462,14 @@ int main(void)
     k = 0; //set k=0 to ensure manual incrementing of k for UART is setup correctly
     //fixes a bug where the array skips the first character, always a $
     GPS_GNGGA[0] = '$';
-    //LORA_PAYLOAD.LORA_GPS[0] = '$';
-
-    //DEBUG ONLY, DELETE THIS FOR LOOP WHEN READY TO GET REAL UART DATA
+    //LORA_PAYLOAD.LORA_GPS[0] = '$'; //this line isn't necessary if using real data as it gets copied from "GPS_GNGGA"
+    //DEBUG ONLY, COMMENT THIS FOR LOOP WHEN READY TO GET REAL UART DATA
     //for(i=1; i<95; i++){
         //LORA_PAYLOAD.LORA_GPS[i] = '!';
     //}
     //LORA_PAYLOAD.LORA_GPS[95] = '\n';
 
-    UCA0IE &= ~UCRXIE; //enable UART receive interrupt (do this here so we don't recieve data too early)
+    UCA0IE &= ~UCRXIE; //disable UART receive interrupt (do this here so we don't recieve data too early)
     __enable_interrupt();
 
     delay(10000);
@@ -518,11 +516,11 @@ int main(void)
        convert_pressure();
        LORA_PAYLOAD.LORA_pressure = pressure;
 
-       //set GPS data to struct value
+       //set GPS data to struct value, if we need to debounce a value, this is how we would do it.
           /*for(k = 0; k < 100; k++){
-              LORA_PAYLOAD.LORA_GPS[k] = GPS_GNGGA[k]; //we set this rather than sending the GPS_GNGGA variable directly so we have a slight "debounce" from recieving it
+              LORA_PAYLOAD.LORA_GPS[k] = temp[k]; //we set this rather than sending the GPS_GNGGA variable directly so we have a slight "debounce" from recieving it
               //UCA0TXBUF = LORA_PAYLOAD.LORA_GPS[k]; //uncomment this line to debug what is saving to the struct variable from the UART line
-              if(GPS_GNGGA[k] == '\n'){
+              if(temp[k] == '\n'){
                   k = 0;
               }
               //for(i=0; i<150;i++){} //this line was a delay for UART transmission
@@ -534,20 +532,22 @@ int main(void)
        //Send the character array of all the data to LoRa! Yay! Sending MSB first
           SPI_tx(FIFO_ADDR_PTR_0D, 0x00); //set FIFO pointer to 0x00
 
+          //Write the radiohead header
           P4OUT &= ~NSS;
           UCA1TXBUF = 0x80;           // Write + FIFO Transmit register (1 + 0000000)
-          delay(20);
+          delay(SPI_DELAY);
           UCA1TXBUF = 0xFC;           // Header to
-          delay(20);
+          delay(SPI_DELAY);
           UCA1TXBUF = 0XFB;           // Header from
-          delay(20);
+          delay(SPI_DELAY);
           UCA1TXBUF = 0x5B;           // Header ID
-          delay(20);
+          delay(SPI_DELAY);
           UCA1TXBUF = 0x5B;           // Header Key
-          delay(20);
+          delay(SPI_DELAY);
           UCA1TXBUF = 0x5B;           // Start of transmission character
-          delay(20);
+          delay(SPI_DELAY);
 
+          //transmit sensor data
           SPI_tx_two_bytes(LORA_PAYLOAD.LORA_int_temp);
           SPI_tx_two_bytes(LORA_PAYLOAD.LORA_ext_temp);
           SPI_tx_two_bytes(LORA_PAYLOAD.LORA_ext_temp);
@@ -555,38 +555,26 @@ int main(void)
           SPI_tx_two_bytes(LORA_PAYLOAD.LORA_accel_y);
           SPI_tx_two_bytes(LORA_PAYLOAD.LORA_accel_z);
           UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure >> 24);
-          delay(20);
+          delay(SPI_DELAY);
           UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure >> 16);
-          delay(20);
+          delay(SPI_DELAY);
           UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure >> 8);
-          delay(20);
+          delay(SPI_DELAY);
           UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure);
-          delay(20);
+          delay(SPI_DELAY);
+          //transmit GPS data
           for(i=0; i <100; i++){
-              UCA1TXBUF = temp[i];
-              delay(20);
+              UCA1TXBUF = GPS_GNGGA[i];
+              delay(SPI_DELAY);
           }
-          /*for(k = 0; k < 100; k++){
-              UCA1TXBUF = LORA_PAYLOAD.LORA_GPS[k];
-              delay(20);*/
-              /*if(LORA_PAYLOAD.LORA_GPS[k] == '\n'){
-                  UCA1TXBUF = ']';
-                  delay(20);
-                  k = 100;
-              }
-              else if(k == 99){
-                  UCA1TXBUF = ']';
-                  delay(20);
-              }
-          }*/
-          P4OUT |= NSS;
+          P4OUT |= NSS; //SPI chip select
 
           SPI_tx(FIFO_ADDR_PTR_0D, 0x00); //Set Pointer to FIFO LoRa back to 0x00
 
           SPI_tx(OPMODE_01, MODE_LORA_TX); //Set to Transmit LoRa
 
           //long delay because we don't need to send that often and we wanna get the GPS data
-          for(i=0;i<10;i++){
+          for(i=0;i<15;i++){
             delay(10000);
           }
 
@@ -597,26 +585,12 @@ int main(void)
 //UART receive interrupt
 #pragma vector=EUSCI_A0_VECTOR
 __interrupt void EUSCI_A0_RX_ISR(void){
-    //GPS_GNGGA[j] = UCA0RXBUF;
-    //LORA_PAYLOAD.LORA_GPS[k] = UCA0RXBUF;
-    //if(LORA_PAYLOAD.LORA_GPS[j] == '\n' || j == 99){
-    //if(k == 99){
-        //k = 0;
-        //P6OUT ^= BIT1; //toggle LED
-    //}else{
-        //k++;
-    //}
-    temp[h] = UCA0RXBUF;
-    //temp2 = UCA0RXBUF;
-//    if(GPS_GNGGA[j] == '\n' || j == 99){ //get packets divided by new line, or prevent overflow
-//        j = 0;
+    GPS_GNGGA[h] = UCA0RXBUF;
     P6OUT ^= BIT1; //toggle LED
-//    }else{
     if(h==99){
         h=0;
-        UCA0IE &= ~UCRXIE; //enable UART receive interrupt
+        UCA0IE &= ~UCRXIE; //disable UART receive interrupt
     }else{
         h++;
     }
-//    }
 }
