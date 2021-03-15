@@ -469,7 +469,7 @@ int main(void)
     //}
     //LORA_PAYLOAD.LORA_GPS[95] = '\n';
 
-    UCA0IE |= UCRXIE; //enable UART receive interrupt (do this here so we don't recieve data too early)
+    UCA0IE &= ~UCRXIE; //enable UART receive interrupt (do this here so we don't recieve data too early)
     __enable_interrupt();
 
     delay(10000);
@@ -525,6 +525,9 @@ int main(void)
               }
               //for(i=0; i<150;i++){} //this line was a delay for UART transmission
           }*/
+
+       UCA0IE |= UCRXIE; //enable UART receive interrupt
+       delay(10000);
 
        //Send the character array of all the data to LoRa! Yay! Sending MSB first
           SPI_tx(FIFO_ADDR_PTR_0D, 0x00); //set FIFO pointer to 0x00
@@ -609,6 +612,7 @@ __interrupt void EUSCI_A0_RX_ISR(void){
 //    }else{
     if(h==99){
         h=0;
+        UCA0IE &= ~UCRXIE; //enable UART receive interrupt
     }else{
         h++;
     }

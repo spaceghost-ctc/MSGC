@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v20.2.4                     
 ******************************************************************************
->> Linked Mon Mar 15 00:37:54 2021
+>> Linked Mon Mar 15 11:30:29 2021
 
 OUTPUT FILE NAME:   <LoRa_GPS_Only_Test.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 000085f6
+ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 00008606
 
 
 MEMORY CONFIGURATION
@@ -17,7 +17,7 @@ MEMORY CONFIGURATION
   TLVMEM                00001a00   00000200  00000000  00000200  RWIX
   BOOTCODE              00001c00   00000400  00000000  00000400  RWIX
   RAM                   00002000   00001000  0000032c  00000cd4  RWIX
-  FRAM                  00008000   00007f80  0000061e  00007962  RWIX
+  FRAM                  00008000   00007f80  0000062e  00007952  RWIX
   JTAGSIGNATURE         0000ff80   00000004  00000004  00000000  RWIX  ffff 
   BSLSIGNATURE          0000ff84   00000004  00000004  00000000  RWIX  ffff 
   BSLCONFIGURATIONSIGNA 0000ff88   00000002  00000002  00000000  RWIX  ffff 
@@ -107,26 +107,26 @@ section   page    origin      length       input sections
 
 .const     0    00008060    00000000     UNINITIALIZED
 
-.text      0    00008060    0000056e     
-                  00008060    000002a2     main.obj (.text:main)
-                  00008302    000000ee     rts430x_lc_sd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  000083f0    0000006a                            : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
-                  0000845a    00000040                            : cpy_util.asm.obj (.text:__memcpy_far)
-                  0000849a    0000003e     main.obj (.text:UART_config_GPS_msgs)
-                  000084d8    0000003e     rts430x_lc_sd_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  00008516    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
-                  00008552    0000003c     rts430x_lc_sd_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  0000858e    00000022     main.obj (.text:SPI_tx)
-                  000085b0    00000012     main.obj (.text:delay)
-                  000085c2    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
-                  000085c8    00000004                            : pre_init.c.obj (.text:_system_pre_init)
-                  000085cc    00000002                            : startup.c.obj (.text:_system_post_cinit)
+.text      0    00008060    0000057a     
+                  00008060    000002ae     main.obj (.text:main)
+                  0000830e    000000ee     rts430x_lc_sd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  000083fc    0000006a                            : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
+                  00008466    00000040                            : cpy_util.asm.obj (.text:__memcpy_far)
+                  000084a6    0000003e     main.obj (.text:UART_config_GPS_msgs)
+                  000084e4    0000003e     rts430x_lc_sd_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00008522    0000003c     FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib : frwp_init.obj (.text:__mpu_init)
+                  0000855e    0000003c     rts430x_lc_sd_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  0000859a    00000022     main.obj (.text:SPI_tx)
+                  000085bc    00000012     main.obj (.text:delay)
+                  000085ce    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
+                  000085d4    00000004                            : pre_init.c.obj (.text:_system_pre_init)
+                  000085d8    00000002                            : startup.c.obj (.text:_system_post_cinit)
 
 .text:_isr 
-*          0    000085ce    00000050     
-                  000085ce    00000028     main.obj (.text:_isr:EUSCI_A0_RX_ISR)
-                  000085f6    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
-                  00008616    00000008                            : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
+*          0    000085da    00000054     
+                  000085da    0000002c     main.obj (.text:_isr:EUSCI_A0_RX_ISR)
+                  00008606    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
+                  00008626    00000008                            : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
 
 .bss       0    00002000    000001f7     UNINITIALIZED
                   00002000    000000c8     (.common:txpack)
@@ -257,9 +257,9 @@ MODULE SUMMARY
        Module                       code   ro data   rw data
        ------                       ----   -------   -------
     .\
-       main.obj                     828    2         649    
+       main.obj                     844    2         649    
     +--+----------------------------+------+---------+---------+
-       Total:                       828    2         649    
+       Total:                       844    2         649    
                                                             
     C:\ti\ccs1020\ccs\ccs_base\msp430\lib\FR2xx\FRWP_INIT_LIB_CCS_msp430_large_code_small_data.lib
        frwp_init.obj                60     0         0      
@@ -306,7 +306,7 @@ MODULE SUMMARY
        Stack:                       0      0         160    
        Linker Generated:            0      96        0      
     +--+----------------------------+------+---------+---------+
-       Grand Total:                 1470   146       809    
+       Grand Total:                 1486   146       809    
 
 
 LINKER GENERATED COPY TABLES
@@ -406,7 +406,7 @@ address   name
 00000672  BAKMEM9                                
 00000673  BAKMEM9_H                              
 00000672  BAKMEM9_L                              
-000085c2  C$$EXIT                                
+000085ce  C$$EXIT                                
 000002ee  CAPTIOCTL                              
 000002ef  CAPTIOCTL_H                            
 000002ee  CAPTIOCTL_L                            
@@ -485,7 +485,7 @@ address   name
 00000190  CSCTL8                                 
 00000191  CSCTL8_H                               
 00000190  CSCTL8_L                               
-000085ce  EUSCI_A0_RX_ISR                        
+000085da  EUSCI_A0_RX_ISR                        
 000001a0  FRCTL0                                 
 000001a1  FRCTL0_H                               
 000001a0  FRCTL0_L                               
@@ -975,7 +975,7 @@ address   name
 00000104  SFRRPCR                                
 00000105  SFRRPCR_H                              
 00000104  SFRRPCR_L                              
-0000858e  SPI_tx                                 
+0000859a  SPI_tx                                 
 000004ce  SUMEXT                                 
 000004cf  SUMEXT_H                               
 000004ce  SUMEXT_L                               
@@ -1162,7 +1162,7 @@ address   name
 00000450  TB3R                                   
 00000451  TB3R_H                                 
 00000450  TB3R_L                                 
-0000849a  UART_config_GPS_msgs                   
+000084a6  UART_config_GPS_msgs                   
 00000510  UCA0ABCTL                              
 00000511  UCA0ABCTL_H                            
 00000510  UCA0ABCTL_L                            
@@ -1346,10 +1346,10 @@ address   name
 00008060  __TI_CINIT_Limit                       
 0000803e  __TI_Handler_Table_Base                
 0000804a  __TI_Handler_Table_Limit               
-00008616  __TI_ISR_TRAP                          
-000083f0  __TI_auto_init_nobinit_nopinit_hold_wdt
-00008302  __TI_decompress_lzss                   
-00008552  __TI_decompress_none                   
+00008626  __TI_ISR_TRAP                          
+000083fc  __TI_auto_init_nobinit_nopinit_hold_wdt
+0000830e  __TI_decompress_lzss                   
+0000855e  __TI_decompress_none                   
 0000ffce  __TI_int22                             
 0000ffd0  __TI_int23                             
 0000ffd2  __TI_int24                             
@@ -1377,18 +1377,18 @@ address   name
 ffffffff  __TI_pprof_out_hndl                    
 ffffffff  __TI_prof_data_size                    
 ffffffff  __TI_prof_data_start                   
-000084d8  __TI_zero_init_nomemset                
+000084e4  __TI_zero_init_nomemset                
 ffffffff  __c_args__                             
-0000845a  __memcpy_far                           
+00008466  __memcpy_far                           
 00000001  __mpu_enable                           
-00008516  __mpu_init                             
-000085f6  _c_int00_noargs_mpu                    
+00008522  __mpu_init                             
+00008606  _c_int00_noargs_mpu                    
 0000fffe  _reset_vector                          
 00002f60  _stack                                 
-000085cc  _system_post_cinit                     
-000085c8  _system_pre_init                       
-000085c2  abort                                  
-000085b0  delay                                  
+000085d8  _system_post_cinit                     
+000085d4  _system_pre_init                       
+000085ce  abort                                  
+000085bc  delay                                  
 000021f8  diable_GLL                             
 00002216  diable_GSA                             
 00002234  diable_GSV                             
@@ -2443,22 +2443,22 @@ address   name
 00008050  __TI_CINIT_Base                        
 00008060  __TI_CINIT_Limit                       
 00008060  main                                   
-00008302  __TI_decompress_lzss                   
-000083f0  __TI_auto_init_nobinit_nopinit_hold_wdt
-0000845a  __memcpy_far                           
-0000849a  UART_config_GPS_msgs                   
-000084d8  __TI_zero_init_nomemset                
-00008516  __mpu_init                             
-00008552  __TI_decompress_none                   
-0000858e  SPI_tx                                 
-000085b0  delay                                  
-000085c2  C$$EXIT                                
-000085c2  abort                                  
-000085c8  _system_pre_init                       
-000085cc  _system_post_cinit                     
-000085ce  EUSCI_A0_RX_ISR                        
-000085f6  _c_int00_noargs_mpu                    
-00008616  __TI_ISR_TRAP                          
+0000830e  __TI_decompress_lzss                   
+000083fc  __TI_auto_init_nobinit_nopinit_hold_wdt
+00008466  __memcpy_far                           
+000084a6  UART_config_GPS_msgs                   
+000084e4  __TI_zero_init_nomemset                
+00008522  __mpu_init                             
+0000855e  __TI_decompress_none                   
+0000859a  SPI_tx                                 
+000085bc  delay                                  
+000085ce  C$$EXIT                                
+000085ce  abort                                  
+000085d4  _system_pre_init                       
+000085d8  _system_post_cinit                     
+000085da  EUSCI_A0_RX_ISR                        
+00008606  _c_int00_noargs_mpu                    
+00008626  __TI_ISR_TRAP                          
 0000ffce  __TI_int22                             
 0000ffd0  __TI_int23                             
 0000ffd2  __TI_int24                             

@@ -148,7 +148,7 @@ int main(void)
     k = 0;
     GPS_GNGGA[0] = '$';
 
-    UCA0IE |= UCRXIE; //enable UART receive interrupt
+    UCA0IE &= ~UCRXIE; //enable UART receive interrupt
     __enable_interrupt();
 
     delay(10000);
@@ -199,6 +199,9 @@ int main(void)
                    }
                    //for(i=0; i<150;i++){} //this line was a delay for UART transmission
                }
+
+               UCA0IE |= UCRXIE; //enable UART receive interrupt
+               delay(10000);
 
             SPI_tx(FIFO_ADDR_PTR_0D, 0x00);
 
@@ -265,6 +268,7 @@ __interrupt void EUSCI_A0_RX_ISR(void){
 //    }else{
     if(j==99){
         j=0;
+        UCA0IE &= ~UCRXIE; //enable UART receive interrupt
     }else{
         j++;
     }
