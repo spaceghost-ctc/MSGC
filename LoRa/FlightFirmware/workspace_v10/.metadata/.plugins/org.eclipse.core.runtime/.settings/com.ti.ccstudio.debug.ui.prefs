@@ -1,7 +1,0 @@
-MODULES_CODE_OFFSET=
-MODULES_DATA_OFFSET=
-MODULES_MRU_PATH=\#SYM_\#(,)path\=D\:\\GitHub\\MSGC\\LoRa\\FlightFirmware\\workspace_v10\\LoRA_Board_I2C_Test\\Debug\\LoRA_Board_I2C_Test.out\#THREAD_IDS\#TI MSP430 USB1/MSP430
-MODULES_MRU_PATH.1=D\:\\GitHub\\MSGC\\LoRa\\FlightFirmware\\workspace_v10\\LoRA_Board_I2C_Test\\Debug\\LoRA_Board_I2C_Test.out
-PROMPT_FOR_ADVISOR_REMARKS_ON_LAUNCH=always
-eclipse.preferences.version=1
-useAnnotationsPrefPage=true
