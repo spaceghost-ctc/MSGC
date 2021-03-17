@@ -1,3 +1,5 @@
+//this is a snip of the working code, just because it is essential and we don't wanna lose it
+
 UCA1TXBUF = '[';
                   for(i=0; i<150;i++){}
                   UART_tx_two_bytes(LORA_PAYLOAD.LORA_int_temp);
