@@ -1,3 +1,12 @@
+/* LoRa_Flight_Firmware_V1/main.c
+ * This is the MAIN firmware (version 1) for running this firmware on the MSP430FR2355 based board
+ * 
+ * Copyright © Montana Space Grant Consortium.
+ *
+ * @author Cameron Blegen
+ * @author Larson Brandstetter
+ */
+
 #include <msp430.h> 
 #include "reg_map.h"
 #include "I2C_defs.h"
@@ -550,7 +559,6 @@ int main(void)
           //transmit sensor data
           SPI_tx_two_bytes(LORA_PAYLOAD.LORA_int_temp);
           SPI_tx_two_bytes(LORA_PAYLOAD.LORA_ext_temp);
-          SPI_tx_two_bytes(LORA_PAYLOAD.LORA_ext_temp);
           SPI_tx_two_bytes(LORA_PAYLOAD.LORA_accel_x);
           SPI_tx_two_bytes(LORA_PAYLOAD.LORA_accel_y);
           SPI_tx_two_bytes(LORA_PAYLOAD.LORA_accel_z);
@@ -561,6 +569,14 @@ int main(void)
           UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure >> 8);
           delay(SPI_DELAY);
           UCA1TXBUF = (LORA_PAYLOAD.LORA_pressure);
+          delay(SPI_DELAY);
+          UCA1TXBUF = (press_temp >> 24);
+          delay(SPI_DELAY);
+          UCA1TXBUF = (press_temp >> 16);
+          delay(SPI_DELAY);
+          UCA1TXBUF = (press_temp >> 8);
+          delay(SPI_DELAY);
+          UCA1TXBUF = (press_temp);
           delay(SPI_DELAY);
           //transmit GPS data
           for(i=0; i <100; i++){
@@ -574,7 +590,7 @@ int main(void)
           SPI_tx(OPMODE_01, MODE_LORA_TX); //Set to Transmit LoRa
 
           //long delay because we don't need to send that often and we wanna get the GPS data
-          for(i=0;i<15;i++){
+          for(i=0;i<12;i++){
             delay(10000);
           }
 
