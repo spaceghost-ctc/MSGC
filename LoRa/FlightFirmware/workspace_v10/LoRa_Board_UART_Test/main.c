@@ -88,7 +88,7 @@ int main(void)
 
 #pragma vector=EUSCI_A0_VECTOR
 __interrupt void EUSCI_A0_RX_ISR(void){
-    UCA0TXBUF = UCA0RXBUF;
+    //UCA0TXBUF = UCA0RXBUF;
     //GPS_GNGGA[j] = UCA0RXBUF;
     if(GPS_GNGGA[j] == '\n' || j == 99){ //get packets divided by new line, or prevent overflow
         j = 0;

@@ -16,7 +16,7 @@ __copyright__ = "Copyright, Montana Space Grant Consortium"
 __version__ = "3.1.1"
 
 # DEBUG
-DEBUG_ON = True
+DEBUG_ON = False
 
 # GUI
 csvFile = 'guiData.csv'
