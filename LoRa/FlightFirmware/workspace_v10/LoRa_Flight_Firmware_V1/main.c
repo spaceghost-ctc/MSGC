@@ -15,6 +15,7 @@
 #define PAYLOAD_LEN 0x7D
 #define I2C_DELAY 5
 #define SPI_DELAY 20
+#define GPS_MESSAGE_SIZE 100
 
 //----PAYLOAD STRUCT TO SEND DATA TO LORA-----
 struct payload{
@@ -28,7 +29,8 @@ struct payload{
 };
 
 //--------------Globals--------------------
-char j, k, h, m;
+char j, k, m;
+unsigned char h;
 char i2c_status = 0x00; // 0b00000000 -- | 0 | 0 | 0 | 0 || 0 | 0 | 0 | 1-NAK | (currently unused)
 // char temp_config_int, temp_config_ext; //uncomment this line if uncommenting the lines that get the config of the temp sensors
 int i;
@@ -49,7 +51,7 @@ char diable_RMC[] = {'$','P','U','B','X',',','4','0',',','R','M','C',',','0',','
 //char poll_airborne[] = {0xB5, 0x62, 0x06, 0x24, 0x00, 0x2A, 0x5A};
 //char poll_airborne[] = {0xB5, 0x62, 0x06, 0x24, 0x00, 0x00, 0x2A, 0x84};
 char set_airborne_2g[] = {0xB5, 0x62, 0x06, 0x24, 0x24, 0x00, 0xFF, 0xFF, 0x07, 0x03, 0x00, 0x00, 0x00, 0x00, 0x10, 0x27, 0x00, 0x00, 0x05, 0x00, 0xFA, 0x00, 0xFA, 0x00, 0x64, 0x00, 0x2C, 0x01, 0x00, 0x00, 0x00, 0x00, 0x10, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4E, 0xFD};
-char GPS_GNGGA[100]; //this holds the char array we want
+char GPS_GNGGA[GPS_MESSAGE_SIZE]; //this holds the char array we want
 
 //----LORA STRUCT----
 struct payload LORA_PAYLOAD; //THIS IS THE LORA PAYLOAD ALL MEMBERS ARE DAYA TO BE SENT TO THE LORA, GLOBAL FOR INTERRUPT ACCESS
@@ -596,7 +598,7 @@ int main(void)
           UCA1TXBUF = (press_temp);
           delay(SPI_DELAY);
           //transmit GPS data
-          for(i=0; i <100; i++){
+          for(i=0; i <GPS_MESSAGE_SIZE; i++){
               UCA1TXBUF = GPS_GNGGA[i];
               delay(SPI_DELAY);
           }
@@ -620,7 +622,7 @@ int main(void)
 __interrupt void EUSCI_A0_RX_ISR(void){
     GPS_GNGGA[h] = UCA0RXBUF;
     P6OUT ^= BIT1; //toggle LED
-    if(h==99){
+    if(h==(GPS_MESSAGE_SIZE-1){
         h=0;
         UCA0IE &= ~UCRXIE; //disable UART receive interrupt
     }else{
