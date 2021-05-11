@@ -6207,19 +6207,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\12083\\.nuget\\packages\\": {}
+    "C:\\Users\\space\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\12083\\source\\repos\\GCS_V01_DavidBowie\\GCS_V01_DavidBowie\\GCS_V01_DavidBowie.csproj",
+      "projectUniqueName": "C:\\Users\\space\\Documents\\GitHub\\csci-246-spring2021\\MSGC\\skynet\\GCS_V01_DavidBowie\\GCS_V01_DavidBowie\\GCS_V01_DavidBowie.csproj",
       "projectName": "GCS_V01_DavidBowie",
-      "projectPath": "C:\\Users\\12083\\source\\repos\\GCS_V01_DavidBowie\\GCS_V01_DavidBowie\\GCS_V01_DavidBowie.csproj",
-      "packagesPath": "C:\\Users\\12083\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\12083\\source\\repos\\GCS_V01_DavidBowie\\GCS_V01_DavidBowie\\obj\\",
+      "projectPath": "C:\\Users\\space\\Documents\\GitHub\\csci-246-spring2021\\MSGC\\skynet\\GCS_V01_DavidBowie\\GCS_V01_DavidBowie\\GCS_V01_DavidBowie.csproj",
+      "packagesPath": "C:\\Users\\space\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\space\\Documents\\GitHub\\csci-246-spring2021\\MSGC\\skynet\\GCS_V01_DavidBowie\\GCS_V01_DavidBowie\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\12083\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\space\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6231,6 +6236,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -6242,6 +6248,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "MySql.Data": {
             "target": "Package",
@@ -6267,7 +6274,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
