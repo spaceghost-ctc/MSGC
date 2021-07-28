@@ -1,8 +1,6 @@
 import serial
 import serial.tools.list_ports
-from PyQt5 import QtWidgets
-from PyQt5.QtCore import Qt, QThread, pyqtSignal, pyqtBoundSignal
-from PyQt5.QtWidgets import QCompleter
+import tkinter as tk
 import sys
 
 from gWind import Ui_mainWindow

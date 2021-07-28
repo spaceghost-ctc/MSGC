@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>887</width>
-    <height>870</height>
+    <width>1155</width>
+    <height>1237</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,261 +15,10 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="8" column="0">
-     <widget class="QPlainTextEdit" name="temp_p_line">
-      <property name="plainText">
-       <string>Temperature P</string>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="0">
-     <widget class="QPlainTextEdit" name="pressure_line">
-      <property name="plainText">
-       <string>Pressure mBar</string>
-      </property>
-     </widget>
-    </item>
-    <item row="11" column="0">
-     <widget class="QPlainTextEdit" name="y_line">
-      <property name="plainText">
-       <string>Y</string>
-      </property>
-     </widget>
-    </item>
-    <item row="10" column="0">
-     <widget class="QPlainTextEdit" name="x_line">
-      <property name="plainText">
-       <string>X</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QPlainTextEdit" name="latitude_line">
-      <property name="plainText">
-       <string>Latitude</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="1">
-     <widget class="QPlainTextEdit" name="temp_1"/>
-    </item>
-    <item row="12" column="0">
-     <widget class="QPlainTextEdit" name="z_line">
-      <property name="plainText">
-       <string>Z</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="1">
-     <widget class="QPlainTextEdit" name="temp_2"/>
-    </item>
-    <item row="8" column="1">
-     <widget class="QPlainTextEdit" name="temp_p"/>
-    </item>
-    <item row="4" column="2">
-     <widget class="QPlainTextEdit" name="altitude_units">
-      <property name="plainText">
-       <string>meters</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QPlainTextEdit" name="longitude_units">
-      <property name="plainText">
-       <string>decimal degrees</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <widget class="QPlainTextEdit" name="latitude_units">
-      <property name="plainText">
-       <string>decimal degrees</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QPlainTextEdit" name="longitude_line">
-      <property name="plainText">
-       <string>Longitude</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QPlainTextEdit" name="altitude_line">
-      <property name="plainText">
-       <string>Altitude</string>
-      </property>
-     </widget>
-    </item>
-    <item row="13" column="0">
-     <widget class="QPlainTextEdit" name="packets_sent_line">
-      <property name="plainText">
-       <string>Packets Sent</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QPlainTextEdit" name="altitude_ft"/>
-    </item>
-    <item row="14" column="0">
-     <widget class="QPlainTextEdit" name="packets_received_line">
-      <property name="plainText">
-       <string>Packets Received</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QPlainTextEdit" name="altitude_ft_line">
-      <property name="plainText">
-       <string>Altitude ft</string>
-      </property>
-     </widget>
-    </item>
-    <item row="15" column="0">
-     <widget class="QPlainTextEdit" name="packets_lost_line">
-      <property name="plainText">
-       <string>Packets Lost</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPlainTextEdit" name="latitude"/>
-    </item>
-    <item row="4" column="1">
-     <widget class="QPlainTextEdit" name="altitude"/>
-    </item>
-    <item row="3" column="1">
-     <widget class="QPlainTextEdit" name="longitude"/>
-    </item>
     <item row="0" column="1">
      <widget class="QPushButton" name="board_select">
       <property name="text">
        <string>Select</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPlainTextEdit" name="board_id"/>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPlainTextEdit" name="board_id_line">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="font">
-       <font>
-        <underline>false</underline>
-       </font>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <property name="plainText">
-       <string>Board ID</string>
-      </property>
-      <property name="textInteractionFlags">
-       <set>Qt::NoTextInteraction</set>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="0">
-     <widget class="QPlainTextEdit" name="temp_2_line">
-      <property name="plainText">
-       <string>Temperature 2</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="0">
-     <widget class="QPlainTextEdit" name="temp_1_line">
-      <property name="plainText">
-       <string>Temperature 1</string>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="1">
-     <widget class="QPlainTextEdit" name="pressure"/>
-    </item>
-    <item row="10" column="1">
-     <widget class="QPlainTextEdit" name="x_accel"/>
-    </item>
-    <item row="11" column="1">
-     <widget class="QPlainTextEdit" name="y_accel"/>
-    </item>
-    <item row="12" column="1">
-     <widget class="QPlainTextEdit" name="z_accel"/>
-    </item>
-    <item row="13" column="1">
-     <widget class="QPlainTextEdit" name="packets_sent"/>
-    </item>
-    <item row="14" column="1">
-     <widget class="QPlainTextEdit" name="packets_received"/>
-    </item>
-    <item row="15" column="1">
-     <widget class="QPlainTextEdit" name="packets_lost"/>
-    </item>
-    <item row="5" column="2">
-     <widget class="QPlainTextEdit" name="altitude_ft_units">
-      <property name="plainText">
-       <string>feet</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="2">
-     <widget class="QPlainTextEdit" name="temp_1_units">
-      <property name="plainText">
-       <string>Celcius</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="2">
-     <widget class="QPlainTextEdit" name="temp_2_units">
-      <property name="plainText">
-       <string>Celcius</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="2">
-     <widget class="QPlainTextEdit" name="temp_p_units">
-      <property name="plainText">
-       <string>Celcius</string>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="2">
-     <widget class="QPlainTextEdit" name="pressure_units">
-      <property name="plainText">
-       <string>milli Bar</string>
-      </property>
-     </widget>
-    </item>
-    <item row="10" column="2">
-     <widget class="QPlainTextEdit" name="x_units">
-      <property name="plainText">
-       <string>meters/second</string>
-      </property>
-     </widget>
-    </item>
-    <item row="11" column="2">
-     <widget class="QPlainTextEdit" name="y_units">
-      <property name="plainText">
-       <string>meters/second</string>
-      </property>
-     </widget>
-    </item>
-    <item row="12" column="2">
-     <widget class="QPlainTextEdit" name="z_units">
-      <property name="plainText">
-       <string>meters/second</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QPushButton" name="start_button">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>START</string>
       </property>
      </widget>
     </item>
@@ -282,6 +31,306 @@
       </item>
      </widget>
     </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="start_button">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>START</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="3">
+     <widget class="QTableWidget" name="data_table">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="rowCount">
+       <number>20</number>
+      </property>
+      <property name="columnCount">
+       <number>3</number>
+      </property>
+      <attribute name="horizontalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <row/>
+      <column/>
+      <column/>
+      <column/>
+      <item row="0" column="0">
+       <property name="text">
+        <string>Board ID</string>
+       </property>
+      </item>
+      <item row="0" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="0" column="2">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="1" column="0">
+       <property name="text">
+        <string>Latitude</string>
+       </property>
+      </item>
+      <item row="1" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="1" column="2">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="2" column="0">
+       <property name="text">
+        <string>Longitude</string>
+       </property>
+      </item>
+      <item row="2" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="2" column="2">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="3" column="0">
+       <property name="text">
+        <string>Altitude</string>
+       </property>
+      </item>
+      <item row="3" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="3" column="2">
+       <property name="text">
+        <string>meters</string>
+       </property>
+      </item>
+      <item row="4" column="0">
+       <property name="text">
+        <string>Altitude</string>
+       </property>
+      </item>
+      <item row="4" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="4" column="2">
+       <property name="text">
+        <string>feet</string>
+       </property>
+      </item>
+      <item row="5" column="0">
+       <property name="text">
+        <string>X</string>
+       </property>
+      </item>
+      <item row="5" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="5" column="2">
+       <property name="text">
+        <string>meters/second</string>
+       </property>
+      </item>
+      <item row="6" column="0">
+       <property name="text">
+        <string>Y</string>
+       </property>
+      </item>
+      <item row="6" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="6" column="2">
+       <property name="text">
+        <string>meters/second</string>
+       </property>
+      </item>
+      <item row="7" column="0">
+       <property name="text">
+        <string>Z</string>
+       </property>
+      </item>
+      <item row="7" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="7" column="2">
+       <property name="text">
+        <string>meters/second</string>
+       </property>
+      </item>
+      <item row="8" column="0">
+       <property name="text">
+        <string>Temperature 1</string>
+       </property>
+      </item>
+      <item row="8" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="8" column="2">
+       <property name="text">
+        <string>Celsius</string>
+       </property>
+      </item>
+      <item row="9" column="0">
+       <property name="text">
+        <string>Temperature 2</string>
+       </property>
+      </item>
+      <item row="9" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="9" column="2">
+       <property name="text">
+        <string>Celsius</string>
+       </property>
+      </item>
+      <item row="10" column="0">
+       <property name="text">
+        <string>Temperature P</string>
+       </property>
+      </item>
+      <item row="10" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="10" column="2">
+       <property name="text">
+        <string>Celsius</string>
+       </property>
+      </item>
+      <item row="11" column="0">
+       <property name="text">
+        <string>Pressure</string>
+       </property>
+      </item>
+      <item row="11" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="11" column="2">
+       <property name="text">
+        <string>milli Bar</string>
+       </property>
+      </item>
+      <item row="12" column="0">
+       <property name="text">
+        <string>Packets Sent</string>
+       </property>
+      </item>
+      <item row="12" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="12" column="2">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="13" column="0">
+       <property name="text">
+        <string>Packets Received</string>
+       </property>
+      </item>
+      <item row="13" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="13" column="2">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="14" column="0">
+       <property name="text">
+        <string>Packets Lost</string>
+       </property>
+      </item>
+      <item row="14" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="14" column="2">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="15" column="0">
+       <property name="text">
+        <string>Loss per Hour</string>
+       </property>
+      </item>
+      <item row="15" column="1">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="15" column="2">
+       <property name="text">
+        <string>packets/hour</string>
+       </property>
+      </item>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -289,7 +338,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>887</width>
+     <width>1155</width>
      <height>21</height>
     </rect>
    </property>
