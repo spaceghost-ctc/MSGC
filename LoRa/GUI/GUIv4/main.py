@@ -62,8 +62,6 @@ class Window(QtWidgets.QMainWindow, Ui_mainWindow):
         self.LON = 0
         self.ALT = 0
 
-        # Setting up Data Table
-
         for port, desc, hwid in sorted(self.ports):
             self.board_1_port.addItem(desc)
             self.portNames.append("{}".format(port))

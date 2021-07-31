@@ -10,3 +10,7 @@ class SerialConn:
         self.attempt_num = 0
         self.sensor_data = []
         return
+
+    def rec_data(self):
+        self.DataPack = self.COM_Port.read()
+        return self.DataPack
