@@ -9,8 +9,14 @@ import csv
 from datetime import datetime
 import os
 
-#  TODO: Add NEMO Data
-#  TODO: Add .csv Output
+#  TODO: 2s Comp on Temp P <2021.8.5> -L [Modified First 5 Packet Calculations]
+#  TODO: GPS Parse Fix
+#  TODO: Packet Counter Fix
+#  TODO: Board ID Print Terminal
+#  TODO: Useful NEMO Data Display
+#  TODO: Decimal Rounding
+#  TODO: Accel to m/s2
+#  TODO: NEMO Packet Loss
 
 
 class Window(object):
@@ -500,27 +506,16 @@ class Board1Thread(object):
         cwd = os.getcwd()
         out = open(cwd + "\\outputfiles\\" + timedate + ".csv", "w", newline='')
         self.csvwriter = csv.writer(out)
+        self.pack1cnt = 0
+        self.pack2cnt = 0
         self.system_running()
 
     def system_running(self):
-        pack1cnt = 0
-        pack2cnt = 0
         while ui.running:
-            # self.data_stream = self.board.read()
             test = 0
             while True:
                 try:
-            #     # Peels of leading char
-            #     try:
-            #         test = self.board.read().decode("utf-8")
-            #         # if test == '[':
-            #         #     print("YES")
-            #         #     start_flag = True
-            #     except:
-            #         pass
-                    # print("couldn't decode character (this is okay)")  # This line can be used for debug if desired
                     test = self.board.read().decode("utf-8")
-                    # print(test)
                     if test == '[':
                         break
                     if test == '{':
@@ -538,7 +533,7 @@ class Board1Thread(object):
                     char = self.board.read().decode("utf-8")
                     if char != ']' or '':
                         string_rec = string_rec + char
-                print(string_rec)
+                print("BOARD 1:" + string_rec)
                 self.data_output = np.asarray(string_rec.split(','))
                 rssi_snr = self.data_output[-2:]
                 self.data_output = self.data_output[:-2].astype(int)
@@ -557,28 +552,45 @@ class Board1Thread(object):
                 self.sensor_data[11] = (payload_sensors[18] << 8) + payload_sensors[19]
                 self.sensor_data[12] = self.sensor_data[12] + 1
 
-                for i in range(5):  # loop through the first 5 values and assign them to the "payload"
-                    # this if statement handles if the number is negative (2s complement)
-                    if self.sensor_data[i].astype(int) >> 15:
-                        temp_list = list(bin(self.sensor_data[i].astype(int)))  # this is needed to do binary 2s complement
-                        for j in range(len(temp_list) - 2):
-                            # Flip bits
-                            if temp_list[j + 2] == '1':
-                                temp_list[j + 2] = '0'
-                            else:
-                                temp_list[j + 2] = '1'
-                        temp_list = "".join(temp_list)  # join the list back together
-                        self.sensor_data[i] = ~ int(temp_list, 2)  # convert the temp list back to a number
-                    if i < 2:
-                        self.sensor_data[i] = self.sensor_data[i] / (2 ** 7)  # convert temperature
-                    if 1 < i < 5:
-                        self.sensor_data[i] = self.sensor_data[i] * 0.061  # convert accelerometer
-                self.sensor_data[5] = self.sensor_data[5]/100
-                self.sensor_data[10] = self.sensor_data[10]/100
-            # Fixed to Here
-            #     placeholder = "" + str(self.data_output[22:-2])
-            #     self.payload_gps = np.asarray(placeholder.split(','), np.str_)
+                if self.sensor_data[0].astype(int) >> 15:
+                    temp_list = list(bin(self.sensor_data[0].astype(int)))  # this is needed to do binary 2s complement
+                    for j in range(len(temp_list) - 2):
+                        # Flip bits
+                        if temp_list[j + 2] == '1':
+                            temp_list[j + 2] = '0'
+                        else:
+                            temp_list[j + 2] = '1'
+                    temp_list = "".join(temp_list)  # join the list back together
+                    self.sensor_data[0] = ~ int(temp_list, 2)  # convert the temp list back to a number
+                if self.sensor_data[1].astype(int) >> 15:
+                    temp_list = list(bin(self.sensor_data[1].astype(int)))  # this is needed to do binary 2s complement
+                    for j in range(len(temp_list) - 2):
+                        # Flip bits
+                        if temp_list[j + 2] == '1':
+                            temp_list[j + 2] = '0'
+                        else:
+                            temp_list[j + 2] = '1'
+                    temp_list = "".join(temp_list)  # join the list back together
+                    self.sensor_data[1] = ~ int(temp_list, 2)  # convert the temp list back to a number
+                if self.sensor_data[10].astype(int) >> 15:
+                    temp_list = list(bin(self.sensor_data[10].astype(int)))  # this is needed to do binary 2s complement
+                    for j in range(len(temp_list) - 2):
+                        # Flip bits
+                        if temp_list[j + 2] == '1':
+                            temp_list[j + 2] = '0'
+                        else:
+                            temp_list[j + 2] = '1'
+                    temp_list = "".join(temp_list)  # join the list back together
+                    self.sensor_data[10] = ~ int(temp_list, 2)  # convert the temp list back to a number
+                self.sensor_data[0] = self.sensor_data[0] / (2 ** 7)  # convert temperature 1
+                self.sensor_data[1] = self.sensor_data[1] / (2 ** 7)  # convert temperature 2
+                self.sensor_data[2] = self.sensor_data[2] * 0.061  # convert accelerometer x
+                self.sensor_data[3] = self.sensor_data[3] * 0.061  # convert accelerometer y
+                self.sensor_data[4] = self.sensor_data[4] * 0.061  # convert accelerometer z
+                self.sensor_data[5] = self.sensor_data[5]/100 # convert pressure
+                self.sensor_data[10] = self.sensor_data[10]/100 # convert temperature P
 
+                #  FIXME: GPS Parse is failing, figure out why
                 gga_ind = np.where(self.payload_gps == "$GNGGA")  # find the index of GNGGA
                 if len(gga_ind[0]) != 0:
                     # print("GGA: " + gga_ind.astype(str))
@@ -708,21 +720,6 @@ class Board1Thread(object):
                 elif len(time) == 4:
                     time.insert(0, '0')
                     time.insert(0, '0')
-
-                # print("Internal Temp:   " + str(self.sensor_data[0]))
-                # print("External Temp:   " + str(self.sensor_data[1]))
-                # print("X Accel:     " + str(self.sensor_data[2]))
-                # print("Y Accel:     " + str(self.sensor_data[3]))
-                # print("Z Accel:     " + str(self.sensor_data[4]))
-                # print("Pressure:    " + str(self.sensor_data[5]))
-                # print("Time: " + str(self.sensor_data[6]))
-                # print("Latitude:  " + str(self.sensor_data[7]))
-                # print("Longitude:  " + str(self.sensor_data[8]))
-                # print("Altitude:  "+ str(self.sensor_data[9]))
-                # print("Pressure Temp: " + str(self.sensor_data[10]))
-                # print("Packets sent: " + str(self.sensor_data[11]))
-                # print("Packets received " + str(self.sensor_data[12]))
-
                 try:
                     ui.time_val["text"] = time[0] + time[1] + ":" + time[2] + time[3] + ":" + time[4] + time[5]
                 except IndexError:
@@ -749,9 +746,9 @@ class Board1Thread(object):
                     char = self.board.read().decode("utf-8")
                     if char != '}' or '':
                         string_rec = string_rec + char
-                print(string_rec)
-                pack1cnt = pack1cnt + 1
-                ui.nemo_data_val["text"] = pack1cnt
+                print("BOARD1:" + string_rec)
+                self.pack1cnt = self.pack1cnt + 1
+                ui.nemo_data_val["text"] = self.pack1cnt
                 self.data_output = np.asarray(string_rec.split(','))
                 self.csvwriter.writerow(self.data_output)
             elif test == '(':
@@ -761,9 +758,9 @@ class Board1Thread(object):
                     char = self.board.read().decode("utf-8")
                     if char != ')' or '':
                         string_rec = string_rec + char
-                print(string_rec)
-                pack2cnt = pack2cnt + 1
-                ui.nemo_hist_val["text"] = pack2cnt
+                print("BOARD 1:" + string_rec)
+                self.pack2cnt = self.pack2cnt + 1
+                ui.nemo_hist_val["text"] = self.pack2cnt
                 self.data_output = np.asarray(string_rec.split(','))
                 self.csvwriter.writerow(self.data_output)
             else:
@@ -827,7 +824,7 @@ class Board2Thread(object):
                     char = self.board.read().decode("utf-8")
                     if char != ']' or '':
                         string_rec = string_rec + char
-                print(string_rec)
+                print("BOARD 2:" + string_rec)
                 self.data_output = np.asarray(string_rec.split(','))
                 rssi_snr = self.data_output[-2:]
                 self.data_output = self.data_output[:-2].astype(int)
@@ -849,28 +846,43 @@ class Board2Thread(object):
                 self.sensor_data[11] = (payload_sensors[18] << 8) + payload_sensors[19]
                 self.sensor_data[12] = self.sensor_data[12] + 1
 
-                for i in range(5):  # loop through the first 5 values and assign them to the "payload"
-                    # this if statement handles if the number is negative (2s complement)
-                    if self.sensor_data[i].astype(int) >> 15:
-                        temp_list = list(
-                            bin(self.sensor_data[i].astype(int)))  # this is needed to do binary 2s complement
-                        for j in range(len(temp_list) - 2):
-                            # Flip bits
-                            if temp_list[j + 2] == '1':
-                                temp_list[j + 2] = '0'
-                            else:
-                                temp_list[j + 2] = '1'
-                        temp_list = "".join(temp_list)  # join the list back together
-                        self.sensor_data[i] = ~ int(temp_list, 2)  # convert the temp list back to a number
-                    if i < 2:
-                        self.sensor_data[i] = self.sensor_data[i] / (2 ** 7)  # convert temperature
-                    if 1 < i < 5:
-                        self.sensor_data[i] = self.sensor_data[i] * 0.061  # convert accelerometer
-                self.sensor_data[5] = self.sensor_data[5] / 100
-                self.sensor_data[10] = self.sensor_data[10] / 100
-                # Fixed to Here
-                #     placeholder = "" + str(self.data_output[22:-2])
-                #     self.payload_gps = np.asarray(placeholder.split(','), np.str_)
+                if self.sensor_data[0].astype(int) >> 15:
+                    temp_list = list(bin(self.sensor_data[0].astype(int)))  # this is needed to do binary 2s complement
+                    for j in range(len(temp_list) - 2):
+                        # Flip bits
+                        if temp_list[j + 2] == '1':
+                            temp_list[j + 2] = '0'
+                        else:
+                            temp_list[j + 2] = '1'
+                    temp_list = "".join(temp_list)  # join the list back together
+                    self.sensor_data[0] = ~ int(temp_list, 2)  # convert the temp list back to a number
+                if self.sensor_data[1].astype(int) >> 15:
+                    temp_list = list(bin(self.sensor_data[1].astype(int)))  # this is needed to do binary 2s complement
+                    for j in range(len(temp_list) - 2):
+                        # Flip bits
+                        if temp_list[j + 2] == '1':
+                            temp_list[j + 2] = '0'
+                        else:
+                            temp_list[j + 2] = '1'
+                    temp_list = "".join(temp_list)  # join the list back together
+                    self.sensor_data[1] = ~ int(temp_list, 2)  # convert the temp list back to a number
+                if self.sensor_data[10].astype(int) >> 15:
+                    temp_list = list(bin(self.sensor_data[10].astype(int)))  # this is needed to do binary 2s complement
+                    for j in range(len(temp_list) - 2):
+                        # Flip bits
+                        if temp_list[j + 2] == '1':
+                            temp_list[j + 2] = '0'
+                        else:
+                            temp_list[j + 2] = '1'
+                    temp_list = "".join(temp_list)  # join the list back together
+                    self.sensor_data[10] = ~ int(temp_list, 2)  # convert the temp list back to a number
+                self.sensor_data[0] = self.sensor_data[0] / (2 ** 7)  # convert temperature 1
+                self.sensor_data[1] = self.sensor_data[1] / (2 ** 7)  # convert temperature 2
+                self.sensor_data[2] = self.sensor_data[2] * 0.061  # convert accelerometer x
+                self.sensor_data[3] = self.sensor_data[3] * 0.061  # convert accelerometer y
+                self.sensor_data[4] = self.sensor_data[4] * 0.061  # convert accelerometer z
+                self.sensor_data[5] = self.sensor_data[5] / 100  # convert pressure
+                self.sensor_data[10] = self.sensor_data[10] / 100  # convert temperature P
 
                 gga_ind = np.where(self.payload_gps == "$GNGGA")  # find the index of GNGGA
                 if len(gga_ind[0]) != 0:
@@ -1001,21 +1013,6 @@ class Board2Thread(object):
                 elif len(time) == 4:
                     time.insert(0, '0')
                     time.insert(0, '0')
-
-                # print("Internal Temp:   " + str(self.sensor_data[0]))
-                # print("External Temp:   " + str(self.sensor_data[1]))
-                # print("X Accel:     " + str(self.sensor_data[2]))
-                # print("Y Accel:     " + str(self.sensor_data[3]))
-                # print("Z Accel:     " + str(self.sensor_data[4]))
-                # print("Pressure:    " + str(self.sensor_data[5]))
-                # print("Time: " + str(self.sensor_data[6]))
-                # print("Latitude:  " + str(self.sensor_data[7]))
-                # print("Longitude:  " + str(self.sensor_data[8]))
-                # print("Altitude:  "+ str(self.sensor_data[9]))
-                # print("Pressure Temp: " + str(self.sensor_data[10]))
-                # print("Packets sent: " + str(self.sensor_data[11]))
-                # print("Packets received " + str(self.sensor_data[12]))
-
                 try:
                     ui.time_val2["text"] = time[0] + time[1] + ":" + time[2] + time[3] + ":" + time[4] + time[5]
                 except IndexError:
@@ -1042,7 +1039,7 @@ class Board2Thread(object):
                     char = self.board.read().decode("utf-8")
                     if char != '}' or '':
                         string_rec = string_rec + char
-                print(string_rec)
+                print("BOARD 2:" + string_rec)
                 pack1cnt = pack1cnt + 1
                 ui.nemo_data_val2["text"] = pack1cnt
                 self.data_output = np.asarray(string_rec.split(','))
@@ -1054,14 +1051,13 @@ class Board2Thread(object):
                     char = self.board.read().decode("utf-8")
                     if char != ')' or '':
                         string_rec = string_rec + char
-                print(string_rec)
+                print("BOARD 2:" + string_rec)
                 pack2cnt = pack2cnt + 1
                 ui.nemo_hist_val2["text"] = pack2cnt
                 self.data_output = np.asarray(string_rec.split(','))
                 self.csvwriter.writerow(self.data_output)
             else:
                 print("TEST FAILED")
-
         return
 
 
