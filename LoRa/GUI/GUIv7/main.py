@@ -101,7 +101,7 @@ class Window(object):
     def setup_ui(self, main_window):
         main_window.title("LoRa UI v5")
         main_window.geometry('800x800')
-        self.frame = Frame(main_window, padx=5, pady=5)
+        self.frame = Frame(main_window, borderwidth=5)
         self.frame.pack(expand=True)
 
         com_list_label = Label(self.frame, text="Board Port")
